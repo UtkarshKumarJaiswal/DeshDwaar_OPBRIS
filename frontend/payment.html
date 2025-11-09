@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fee Payment - Deshswaar</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/payment.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <h2><i class="fas fa-passport"></i> Deshswaar</h2>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="apply.html">Apply</a></li>
+                    <li><a href="renewal.html">Renewal</a></li>
+                    <li><a href="track.html">Track</a></li>
+                    <li><a href="payment.html" class="active">Payment</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1><i class="fas fa-credit-card"></i> Fee Payment</h1>
+                <p>Secure online payment for passport services</p>
+            </div>
+
+            <!-- Payment Container -->
+            <div class="payment-container">
+                <!-- Application Details -->
+                <div class="payment-section">
+                    <h3><i class="fas fa-file-invoice"></i> Application Details</h3>
+                    
+                    <form id="paymentForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="paymentAppNo">Application Number *</label>
+                                <input type="text" id="paymentAppNo" name="applicationNumber" 
+                                       placeholder="DESH12345678901" required>
+                                <button type="button" class="btn btn-link" onclick="fetchApplicationDetails()">
+                                    <i class="fas fa-search"></i> Fetch Details
+                                </button>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="paymentDob">Date of Birth *</label>
+                                <input type="date" id="paymentDob" name="dateOfBirth" required>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Application Summary -->
+                <div class="payment-section" id="applicationSummary" style="display: none;">
+                    <h3><i class="fas fa-user"></i> Application Summary</h3>
+                    
+                    <div class="summary-card">
+                        <div class="summary-row">
+                            <span class="label">Applicant Name:</span>
+                            <span class="value" id="summaryName">-</span>
+                        </div>
+                        <div class="summary-row">
+                            <span class="label">Application Type:</span>
+                            <span class="value" id="summaryType">-</span>
+                        </div>
+                        <div class="summary-row">
+                            <span class="label">Service Type:</span>
+                            <span class="value" id="summaryService">-</span>
+                        </div>
+                        <div class="summary-row">
+                            <span class="label">Application Status:</span>
+                            <span class="value" id="summaryStatus">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fee Breakdown -->
+                <div class="payment-section" id="feeBreakdown" style="display: none;">
+                    <h3><i class="fas fa-calculator"></i> Fee Breakdown</h3>
+                    
+                    <div class="fee-table">
+                        <div class="fee-row">
+                            <span class="fee-description">Passport Fee</span>
+                            <span class="fee-amount" id="passportFee">₹0</span>
+                        </div>
+                        <div class="fee-row">
+                            <span class="fee-description">Service Charge</span>
+                            <span class="fee-amount" id="serviceFee">₹0</span>
+                        </div>
+                        <div class="fee-row">
+                            <span class="fee-description">Processing Fee</span>
+                            <span class="fee-amount" id="processingFee">₹0</span>
+                        </div>
+                        <div class="fee-row additional-fee" id="additionalFeeRow" style="display: none;">
+                            <span class="fee-description" id="additionalFeeDesc">Additional Fee</span>
+                            <span class="fee-amount" id="additionalFee">₹0</span>
+                        </div>
+                        <div class="fee-row tax-row">
+                            <span class="fee-description">GST (18%)</span>
+                            <span class="fee-amount" id="gstAmount">₹0</span>
+                        </div>
+                        <div class="fee-row total-row">
+                            <span class="fee-description"><strong>Total Amount</strong></span>
+                            <span class="fee-amount total"><strong id="totalAmount">₹0</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Methods -->
+                <div class="payment-section" id="paymentMethods" style="display: none;">
+                    <h3><i class="fas fa-wallet"></i> Payment Method</h3>
+                    
+                    <div class="payment-options">
+                        <div class="payment-option" onclick="selectPaymentMethod('card')">
+                            <input type="radio" name="paymentMethod" value="card" id="cardPayment">
+                            <label for="cardPayment">
+                                <i class="fas fa-credit-card"></i>
+                                <span>Credit/Debit Card</span>
+                                <div class="payment-logos">
+                                    <i class="fab fa-cc-visa"></i>
+                                    <i class="fab fa-cc-mastercard"></i>
+                                    <i class="fab fa-cc-amex"></i>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="payment-option" onclick="selectPaymentMethod('upi')">
+                            <input type="radio" name="paymentMethod" value="upi" id="upiPayment">
+                            <label for="upiPayment">
+                                <i class="fas fa-mobile-alt"></i>
+                                <span>UPI Payment</span>
+                                <div class="payment-logos">
+                                    <span class="upi-logo">UPI</span>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="payment-option" onclick="selectPaymentMethod('netbanking')">
+                            <input type="radio" name="paymentMethod" value="netbanking" id="netbankingPayment">
+                            <label for="netbankingPayment">
+                                <i class="fas fa-university"></i>
+                                <span>Net Banking</span>
+                                <div class="payment-logos">
+                                    <span class="bank-logo">Banks</span>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="payment-option" onclick="selectPaymentMethod('wallet')">
+                            <input type="radio" name="paymentMethod" value="wallet" id="walletPayment">
+                            <label for="walletPayment">
+                                <i class="fas fa-wallet"></i>
+                                <span>Digital Wallet</span>
+                                <div class="payment-logos">
+                                    <span class="wallet-logo">Wallets</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card Payment Form -->
+                <div class="payment-section payment-form" id="cardForm" style="display: none;">
+                    <h4><i class="fas fa-credit-card"></i> Card Details</h4>
+                    
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label for="cardNumber">Card Number *</label>
+                            <input type="text" id="cardNumber" name="cardNumber" 
+                                   placeholder="1234 5678 9012 3456" maxlength="19" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cardName">Cardholder Name *</label>
+                            <input type="text" id="cardName" name="cardName" 
+                                   placeholder="As on card" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cardExpiry">Expiry Date *</label>
+                            <input type="text" id="cardExpiry" name="cardExpiry" 
+                                   placeholder="MM/YY" maxlength="5" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cardCvv">CVV *</label>
+                            <input type="password" id="cardCvv" name="cardCvv" 
+                                   placeholder="123" maxlength="4" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- UPI Payment Form -->
+                <div class="payment-section payment-form" id="upiForm" style="display: none;">
+                    <h4><i class="fas fa-mobile-alt"></i> UPI Payment</h4>
+                    
+                    <div class="form-group">
+                        <label for="upiId">UPI ID *</label>
+                        <input type="text" id="upiId" name="upiId" 
+                               placeholder="username@upi" required>
+                    </div>
+                    
+                    <div class="upi-qr">
+                        <div class="qr-placeholder">
+                            <i class="fas fa-qrcode"></i>
+                            <p>QR Code will appear here after payment initiation</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Net Banking Form -->
+                <div class="payment-section payment-form" id="netbankingForm" style="display: none;">
+                    <h4><i class="fas fa-university"></i> Net Banking</h4>
+                    
+                    <div class="form-group">
+                        <label for="bankSelect">Select Your Bank *</label>
+                        <select id="bankSelect" name="bank" required>
+                            <option value="">Choose your bank</option>
+                            <option value="sbi">State Bank of India</option>
+                            <option value="hdfc">HDFC Bank</option>
+                            <option value="icici">ICICI Bank</option>
+                            <option value="axis">Axis Bank</option>
+                            <option value="pnb">Punjab National Bank</option>
+                            <option value="bob">Bank of Baroda</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Payment Actions -->
+                <div class="payment-actions" id="paymentActions" style="display: none;">
+                    <div class="security-info">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Secure payment powered by 256-bit SSL encryption</span>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button type="button" class="btn btn-secondary" onclick="cancelPayment()">
+                            <i class="fas fa-times"></i> Cancel
+                        </button>
+                        <button type="button" class="btn btn-success" onclick="processPayment()">
+                            <i class="fas fa-lock"></i> Pay Securely
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment Success Modal -->
+            <div class="modal" id="paymentSuccessModal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3><i class="fas fa-check-circle text-success"></i> Payment Successful!</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="payment-success-details">
+                            <div class="success-amount">
+                                <span class="amount" id="paidAmount">₹0</span>
+                                <span class="status">Payment Completed</span>
+                            </div>
+                            
+                            <div class="transaction-details">
+                                <div class="detail-row">
+                                    <span>Transaction ID:</span>
+                                    <span id="transactionId">-</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span>Payment Date:</span>
+                                    <span id="paymentDate">-</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span>Application Number:</span>
+                                    <span id="paidAppNumber">-</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" onclick="downloadReceipt()">
+                            <i class="fas fa-download"></i> Download Receipt
+                        </button>
+                        <button class="btn btn-secondary" onclick="closePaymentModal()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Deshswaar - Government of India. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/api-config.js"></script>
+    <script src="js/payment.js"></script>
+</body>
+</html>

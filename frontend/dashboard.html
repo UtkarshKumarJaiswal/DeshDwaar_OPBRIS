@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Deshswaar</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="index.html"><h2><i class="fas fa-passport"></i> Deshswaar</h2></a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="dashboard.html" class="active">Dashboard</a></li>
+                    <li><a href="apply.html">Apply</a></li>
+                    <li><a href="track.html">Track</a></li>
+                    <li><a href="appointments.html">Appointments</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Dashboard Section -->
+    <section class="dashboard-section">
+        <div class="container">
+            <!-- Welcome Section -->
+            <div class="welcome-section">
+                <div class="welcome-content">
+                    <h1>Welcome back, <span id="userName">User</span>!</h1>
+                    <p>Manage your passport applications and services from your dashboard</p>
+                </div>
+                <div class="welcome-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="totalApplications">0</h3>
+                            <p>Total Applications</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="pendingApplications">0</h3>
+                            <p>Pending Applications</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="approvedApplications">0</h3>
+                            <p>Approved Applications</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <h2>Quick Actions</h2>
+                <div class="actions-grid">
+                    <a href="apply.html" class="action-card">
+                        <div class="action-icon">
+                            <i class="fas fa-plus-circle"></i>
+                        </div>
+                        <h3>New Application</h3>
+                        <p>Apply for a new passport</p>
+                    </a>
+                    
+                    <a href="renew.html" class="action-card">
+                        <div class="action-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <h3>Renew Passport</h3>
+                        <p>Renew your existing passport</p>
+                    </a>
+                    
+                    <a href="track.html" class="action-card">
+                        <div class="action-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3>Track Status</h3>
+                        <p>Check application status</p>
+                    </a>
+                    
+                    <a href="appointments.html" class="action-card">
+                        <div class="action-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3>Book Appointment</h3>
+                        <p>Schedule a visit</p>
+                    </a>
+                    
+                    <a href="payment.html" class="action-card">
+                        <div class="action-icon">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <h3>Make Payment</h3>
+                        <p>Pay application fees</p>
+                    </a>
+                    
+                    <a href="downloads.html" class="action-card">
+                        <div class="action-icon">
+                            <i class="fas fa-download"></i>
+                        </div>
+                        <h3>Downloads</h3>
+                        <p>Forms and documents</p>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Recent Applications -->
+            <div class="recent-applications">
+                <div class="section-header">
+                    <h2>Recent Applications</h2>
+                    <a href="applications.html" class="view-all-btn">View All</a>
+                </div>
+                
+                <div class="applications-table">
+                    <table id="applicationsTable">
+                        <thead>
+                            <tr>
+                                <th>Application No.</th>
+                                <th>Type</th>
+                                <th>Date Applied</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="applicationsTableBody">
+                            <!-- Applications will be loaded dynamically -->
+                        </tbody>
+                    </table>
+                    
+                    <div id="noApplicationsMessage" class="no-data" style="display: none;">
+                        <i class="fas fa-inbox"></i>
+                        <h3>No Applications Found</h3>
+                        <p>You haven't submitted any applications yet.</p>
+                        <a href="apply.html" class="btn btn-primary">Apply Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notifications -->
+            <div class="notifications-section">
+                <h2>Recent Notifications</h2>
+                <div class="notifications-list" id="notificationsList">
+                    <!-- Notifications will be loaded dynamically -->
+                </div>
+                
+                <div id="noNotificationsMessage" class="no-data" style="display: none;">
+                    <i class="fas fa-bell-slash"></i>
+                    <h3>No Notifications</h3>
+                    <p>You're all caught up! No new notifications.</p>
+                </div>
+            </div>
+
+            <!-- Recent Activities -->
+            <div class="activities-section">
+                <h2>Recent Activities</h2>
+                <div class="activities-list" id="activitiesList">
+                    <!-- Activities will be loaded dynamically -->
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        <div class="activity-content">
+                            <h4>Account Created</h4>
+                            <p>Welcome to Deshswaar! Your account has been successfully created.</p>
+                            <span class="activity-time" id="accountCreatedTime">Just now</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-passport"></i> Deshswaar</h3>
+                    <p>Your trusted partner for all passport services.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="apply.html">Apply for Passport</a></li>
+                        <li><a href="track.html">Track Application</a></li>
+                        <li><a href="help.html">Help Center</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="feedback.html">Feedback</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Deshswaar - Government of India. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply for Passport - Deshswaar</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="index.html"><h2><i class="fas fa-passport"></i> Deshswaar</h2></a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="login.html" class="login-btn">Login</a></li>
+                    <li><a href="register.html" class="register-btn">Register</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Application Section -->
+    <section class="application-section">
+        <div class="container">
+            <div class="application-header">
+                <h1><i class="fas fa-file-alt"></i> New Passport Application</h1>
+                <p>Fill out the form below to apply for a new passport</p>
+                
+                <!-- Progress Bar -->
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                </div>
+                <div class="progress-steps">
+                    <span class="step active" data-step="1" onclick="goToStep(1)">Personal Info</span>
+                    <span class="step" data-step="2" onclick="goToStep(2)">Address Details</span>
+                    <span class="step" data-step="3" onclick="goToStep(3)">Family Details</span>
+                    <span class="step" data-step="4" onclick="goToStep(4)">Emergency Contact</span>
+                    <span class="step" data-step="5" onclick="goToStep(5)">Documents</span>
+                    <span class="step" data-step="6" onclick="goToStep(6)">Review</span>
+                </div>
+            </div>
+
+            <form id="passportApplicationForm" class="application-form">
+                <!-- Step 1: Personal Information -->
+                <div class="form-step active" id="step1">
+                    <div class="form-section">
+                        <h3><i class="fas fa-user"></i> Personal Information</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="applicationNo">Application Reference Number</label>
+                                <input type="text" id="applicationNo" name="applicationNo" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="applicationType">Application Type</label>
+                                <select id="applicationType" name="applicationType" required>
+                                    <option value="">Select Application Type</option>
+                                    <option value="fresh">Fresh Passport</option>
+                                    <option value="reissue">Re-issue of Passport</option>
+                                    <option value="diplomatic">Diplomatic Passport</option>
+                                    <option value="official">Official Passport</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="middleName">Middle Name</label>
+                                <input type="text" id="middleName" name="middleName">
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="dateOfBirth">Date of Birth *</label>
+                                <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="placeOfBirth">Place of Birth *</label>
+                                <input type="text" id="placeOfBirth" name="placeOfBirth" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="gender">Gender *</label>
+                                <select id="gender" name="gender" required>
+                                    <option value="">Select Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="maritalStatus">Marital Status *</label>
+                                <select id="maritalStatus" name="maritalStatus" required>
+                                    <option value="">Select Marital Status</option>
+                                    <option value="single">Single</option>
+                                    <option value="married">Married</option>
+                                    <option value="divorced">Divorced</option>
+                                    <option value="widowed">Widowed</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="citizenship">Citizenship *</label>
+                                <select id="citizenship" name="citizenship" required>
+                                    <option value="">Select Citizenship</option>
+                                    <option value="indian">Indian</option>
+                                    <option value="dual">Dual Citizenship</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="aadharNumber">Aadhar Number *</label>
+                                <input type="text" id="aadharNumber" name="aadharNumber" placeholder="XXXX XXXX XXXX" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="panNumber">PAN Number</label>
+                                <input type="text" id="panNumber" name="panNumber" placeholder="ABCDE1234F">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 1 Navigation Button -->
+                    <div class="step-navigation" style="margin-top: 2rem; text-align: right;">
+                        <button type="button" class="btn btn-primary" onclick="console.log('Step 1 Next clicked'); goToStep(2);">
+                            Next to Address Details <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Address Details -->
+                <div class="form-step" id="step2">
+                    <div class="form-section">
+                        <h3><i class="fas fa-home"></i> Address Details</h3>
+                        
+                        <h4>Present Address</h4>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="presentHouseNo">House No./Flat No. *</label>
+                                <input type="text" id="presentHouseNo" name="presentHouseNo" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="presentStreet">Street/Lane *</label>
+                                <input type="text" id="presentStreet" name="presentStreet" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="presentArea">Area/Locality *</label>
+                                <input type="text" id="presentArea" name="presentArea" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="presentCity">City *</label>
+                                <input type="text" id="presentCity" name="presentCity" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="presentState">State *</label>
+                                <select id="presentState" name="presentState" required>
+                                    <option value="">Select State</option>
+                                    <option value="andhra-pradesh">Andhra Pradesh</option>
+                                    <option value="arunachal-pradesh">Arunachal Pradesh</option>
+                                    <option value="assam">Assam</option>
+                                    <option value="bihar">Bihar</option>
+                                    <option value="chhattisgarh">Chhattisgarh</option>
+                                    <option value="goa">Goa</option>
+                                    <option value="gujarat">Gujarat</option>
+                                    <option value="haryana">Haryana</option>
+                                    <option value="himachal-pradesh">Himachal Pradesh</option>
+                                    <option value="jharkhand">Jharkhand</option>
+                                    <option value="karnataka">Karnataka</option>
+                                    <option value="kerala">Kerala</option>
+                                    <option value="madhya-pradesh">Madhya Pradesh</option>
+                                    <option value="maharashtra">Maharashtra</option>
+                                    <option value="manipur">Manipur</option>
+                                    <option value="meghalaya">Meghalaya</option>
+                                    <option value="mizoram">Mizoram</option>
+                                    <option value="nagaland">Nagaland</option>
+                                    <option value="odisha">Odisha</option>
+                                    <option value="punjab">Punjab</option>
+                                    <option value="rajasthan">Rajasthan</option>
+                                    <option value="sikkim">Sikkim</option>
+                                    <option value="tamil-nadu">Tamil Nadu</option>
+                                    <option value="telangana">Telangana</option>
+                                    <option value="tripura">Tripura</option>
+                                    <option value="uttar-pradesh">Uttar Pradesh</option>
+                                    <option value="uttarakhand">Uttarakhand</option>
+                                    <option value="west-bengal">West Bengal</option>
+                                    <option value="delhi">Delhi</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="presentPincode">PIN Code *</label>
+                                <input type="text" id="presentPincode" name="presentPincode" pattern="[0-9]{6}" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="sameAsPermanent" name="sameAsPermanent">
+                                <span class="checkmark"></span>
+                                Permanent address is same as present address
+                            </label>
+                        </div>
+
+                        <div id="permanentAddressSection">
+                            <h4>Permanent Address</h4>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="permanentHouseNo">House No./Flat No. *</label>
+                                    <input type="text" id="permanentHouseNo" name="permanentHouseNo" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="permanentStreet">Street/Lane *</label>
+                                    <input type="text" id="permanentStreet" name="permanentStreet" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="permanentArea">Area/Locality *</label>
+                                    <input type="text" id="permanentArea" name="permanentArea" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="permanentCity">City *</label>
+                                    <input type="text" id="permanentCity" name="permanentCity" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="permanentState">State *</label>
+                                    <select id="permanentState" name="permanentState" required>
+                                        <option value="">Select State</option>
+                                        <!-- Same options as present state -->
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="permanentPincode">PIN Code *</label>
+                                    <input type="text" id="permanentPincode" name="permanentPincode" pattern="[0-9]{6}" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2 Navigation Buttons -->
+                    <div class="step-navigation" style="margin-top: 2rem; display: flex; justify-content: space-between;">
+                        <button type="button" class="btn btn-secondary" onclick="goToStep(1);">
+                            <i class="fas fa-arrow-left"></i> Back to Personal Info
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="goToStep(3);">
+                            Next to Family Details <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Family Details -->
+                <div class="form-step" id="step3">
+                    <div class="form-section">
+                        <h3><i class="fas fa-users"></i> Family Details</h3>
+                        
+                        <h4>Father's Details</h4>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fatherFirstName">Father's First Name *</label>
+                                <input type="text" id="fatherFirstName" name="fatherFirstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="fatherMiddleName">Father's Middle Name</label>
+                                <input type="text" id="fatherMiddleName" name="fatherMiddleName">
+                            </div>
+                            <div class="form-group">
+                                <label for="fatherLastName">Father's Last Name *</label>
+                                <input type="text" id="fatherLastName" name="fatherLastName" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fatherNationality">Father's Nationality *</label>
+                                <select id="fatherNationality" name="fatherNationality" required>
+                                    <option value="">Select Nationality</option>
+                                    <option value="indian">Indian</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="fatherOccupation">Father's Occupation</label>
+                                <input type="text" id="fatherOccupation" name="fatherOccupation">
+                            </div>
+                        </div>
+
+                        <h4>Mother's Details</h4>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="motherFirstName">Mother's First Name *</label>
+                                <input type="text" id="motherFirstName" name="motherFirstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="motherMiddleName">Mother's Middle Name</label>
+                                <input type="text" id="motherMiddleName" name="motherMiddleName">
+                            </div>
+                            <div class="form-group">
+                                <label for="motherLastName">Mother's Last Name *</label>
+                                <input type="text" id="motherLastName" name="motherLastName" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="motherNationality">Mother's Nationality *</label>
+                                <select id="motherNationality" name="motherNationality" required>
+                                    <option value="">Select Nationality</option>
+                                    <option value="indian">Indian</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="motherOccupation">Mother's Occupation</label>
+                                <input type="text" id="motherOccupation" name="motherOccupation">
+                            </div>
+                        </div>
+
+                        <div id="spouseDetailsSection">
+                            <h4>Spouse's Details (If Married)</h4>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="spouseFirstName">Spouse's First Name</label>
+                                    <input type="text" id="spouseFirstName" name="spouseFirstName">
+                                </div>
+                                <div class="form-group">
+                                    <label for="spouseMiddleName">Spouse's Middle Name</label>
+                                    <input type="text" id="spouseMiddleName" name="spouseMiddleName">
+                                </div>
+                                <div class="form-group">
+                                    <label for="spouseLastName">Spouse's Last Name</label>
+                                    <input type="text" id="spouseLastName" name="spouseLastName">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="spouseNationality">Spouse's Nationality</label>
+                                    <select id="spouseNationality" name="spouseNationality">
+                                        <option value="">Select Nationality</option>
+                                        <option value="indian">Indian</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="spousePassportNo">Spouse's Passport Number (if applicable)</label>
+                                    <input type="text" id="spousePassportNo" name="spousePassportNo">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3 Navigation Buttons -->
+                    <div class="step-navigation" style="margin-top: 2rem; display: flex; justify-content: space-between;">
+                        <button type="button" class="btn btn-secondary" onclick="goToStep(2);">
+                            <i class="fas fa-arrow-left"></i> Back to Address Details
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="goToStep(4);">
+                            Next to Emergency Contact <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 4: Emergency Contact -->
+                <div class="form-step" id="step4">
+                    <div class="form-section">
+                        <h3><i class="fas fa-phone-alt"></i> Emergency Contact</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="emergencyContactName">Contact Person Name *</label>
+                                <input type="text" id="emergencyContactName" name="emergencyContactName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="emergencyContactRelation">Relationship *</label>
+                                <select id="emergencyContactRelation" name="emergencyContactRelation" required>
+                                    <option value="">Select Relationship</option>
+                                    <option value="father">Father</option>
+                                    <option value="mother">Mother</option>
+                                    <option value="spouse">Spouse</option>
+                                    <option value="sibling">Sibling</option>
+                                    <option value="friend">Friend</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="emergencyContactPhone">Contact Phone *</label>
+                                <input type="tel" id="emergencyContactPhone" name="emergencyContactPhone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="emergencyContactEmail">Contact Email *</label>
+                                <input type="email" id="emergencyContactEmail" name="emergencyContactEmail" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="emergencyContactAddress">Contact Address *</label>
+                            <textarea id="emergencyContactAddress" name="emergencyContactAddress" rows="3" required></textarea>
+                        </div>
+
+                        <h4>Previous Passport Details (If Applicable)</h4>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="previousPassportNo">Previous Passport Number</label>
+                                <input type="text" id="previousPassportNo" name="previousPassportNo">
+                            </div>
+                            <div class="form-group">
+                                <label for="previousPassportIssueDate">Issue Date</label>
+                                <input type="date" id="previousPassportIssueDate" name="previousPassportIssueDate">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="previousPassportIssuePlace">Place of Issue</label>
+                                <input type="text" id="previousPassportIssuePlace" name="previousPassportIssuePlace">
+                            </div>
+                            <div class="form-group">
+                                <label for="previousPassportFileNo">File Number</label>
+                                <input type="text" id="previousPassportFileNo" name="previousPassportFileNo">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 4 Navigation Buttons -->
+                    <div class="step-navigation" style="margin-top: 2rem; display: flex; justify-content: space-between;">
+                        <button type="button" class="btn btn-secondary" onclick="goToStep(3);">
+                            <i class="fas fa-arrow-left"></i> Back to Family Details
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="goToStep(5);">
+                            Next to Documents <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 5: Documents -->
+                <div class="form-step" id="step5">
+                    <div class="form-section">
+                        <h3><i class="fas fa-folder-open"></i> Document Upload</h3>
+                        
+                        <div class="document-upload-info">
+                            <p><i class="fas fa-info-circle"></i> Please upload clear scanned copies or photographs of the following documents:</p>
+                            <ul>
+                                <li>File formats: JPG, PNG, PDF</li>
+                                <li>Maximum file size: 5MB per document</li>
+                                <li>All documents should be clearly readable</li>
+                            </ul>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="photoUpload">Recent Photograph (Passport Size) *</label>
+                            <input type="file" id="photoUpload" name="photoUpload" accept="image/*" required>
+                            <small>White background, 35mm x 45mm, recent color photo</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="aadharUpload">Aadhar Card *</label>
+                            <input type="file" id="aadharUpload" name="aadharUpload" accept="image/*,.pdf" required>
+                            <small>Clear copy of your Aadhar card (front and back)</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="birthCertificateUpload">Birth Certificate *</label>
+                            <input type="file" id="birthCertificateUpload" name="birthCertificateUpload" accept="image/*,.pdf" required>
+                            <small>Official birth certificate issued by Municipal Corporation</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="addressProofUpload">Address Proof *</label>
+                            <input type="file" id="addressProofUpload" name="addressProofUpload" accept="image/*,.pdf" required>
+                            <small>Electricity bill, water bill, or bank statement (not older than 3 months)</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="panCardUpload">PAN Card</label>
+                            <input type="file" id="panCardUpload" name="panCardUpload" accept="image/*,.pdf">
+                            <small>Optional but recommended for faster processing</small>
+                        </div>
+
+                        <div class="form-group" id="previousPassportUploadGroup" style="display: none;">
+                            <label for="previousPassportUpload">Previous Passport Copy</label>
+                            <input type="file" id="previousPassportUpload" name="previousPassportUpload" accept="image/*,.pdf">
+                            <small>First and last page of your previous passport</small>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 5 Navigation Buttons -->
+                    <div class="step-navigation" style="margin-top: 2rem; display: flex; justify-content: space-between;">
+                        <button type="button" class="btn btn-secondary" onclick="goToStep(4);">
+                            <i class="fas fa-arrow-left"></i> Back to Emergency Contact
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="goToStep(6);">
+                            Next to Review <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 6: Review -->
+                <div class="form-step" id="step6">
+                    <div class="form-section">
+                        <h3><i class="fas fa-check-circle"></i> Review Your Application</h3>
+                        
+                        <div class="review-section">
+                            <h4>Personal Information</h4>
+                            <div class="review-grid" id="reviewPersonal"></div>
+                        </div>
+
+                        <div class="review-section">
+                            <h4>Address Details</h4>
+                            <div class="review-grid" id="reviewAddress"></div>
+                        </div>
+
+                        <div class="review-section">
+                            <h4>Family Details</h4>
+                            <div class="review-grid" id="reviewFamily"></div>
+                        </div>
+
+                        <div class="review-section">
+                            <h4>Emergency Contact</h4>
+                            <div class="review-grid" id="reviewEmergency"></div>
+                        </div>
+
+                        <div class="review-section">
+                            <h4>Uploaded Documents</h4>
+                            <div class="review-grid" id="reviewDocuments"></div>
+                        </div>
+
+                        <div class="declaration-section">
+                            <h4>Declaration</h4>
+                            <div class="form-group">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" id="declaration" name="declaration" required>
+                                    <span class="checkmark"></span>
+                                    I hereby declare that the information provided above is true and correct to the best of my knowledge and belief. I understand that any false information may lead to rejection of my application and/or legal action.
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="payment-info">
+                            <h4>Payment Information</h4>
+                            <p>After submission, you will be redirected to the payment page to complete the application fee payment.</p>
+                            <div class="fee-details">
+                                <div class="fee-item">
+                                    <span>Application Fee:</span>
+                                    <strong>₹1,500</strong>
+                                </div>
+                                <div class="fee-item">
+                                    <span>Processing Fee:</span>
+                                    <strong>₹500</strong>
+                                </div>
+                                <div class="fee-item total">
+                                    <span>Total Amount:</span>
+                                    <strong>₹2,000</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="form-navigation">
+                    <!-- <button type="button" id="prevBtn" class="btn btn-secondary" onclick="changeStep(-1)" style="display: none;">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </button> -->
+                    <!-- <button type="button" id="nextBtn" class="btn btn-primary" onclick="console.log('Next button clicked!'); changeStep(1);">
+                        Next <i class="fas fa-arrow-right"></i> -->
+                    </button>
+                    <button type="submit" id="submitBtn" class="btn btn-primary" style="display: none;">
+                        <i class="fas fa-paper-plane"></i> Submit Application
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Application Info -->
+    <section class="application-info">
+        <div class="container">
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Processing Time</h3>
+                    <p>Normal: 30-45 days<br>Tatkal: 1-3 days</p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-rupee-sign"></i>
+                    </div>
+                    <h3>Application Fee</h3>
+                    <p>36 Pages: ₹1,500<br>60 Pages: ₹2,000</p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>Required Documents</h3>
+                    <p>Aadhar Card, Birth Certificate,<br>Address Proof, Photos</p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Validity</h3>
+                    <p>10 years for adults<br>5 years for minors</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-passport"></i> Deshswaar</h3>
+                    <p>Your trusted partner for all passport services.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="help.html">Help Center</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Deshswaar - Government of India. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/application.js"></script>
+
+    <style>
+        .application-section {
+            padding: 120px 0 80px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            min-height: 100vh;
+        }
+        
+        .application-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .application-header h1 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+        }
+        
+        .application-header p {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .progress-steps {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .step {
+            color: #666;
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            background: white;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .step:hover {
+            background: #e9ecef;
+            transform: translateY(-2px);
+        }
+        
+        .step.active {
+            background: #3498db;
+            color: white;
+        }
+        
+        .step.completed {
+            background: #27ae60;
+            color: white;
+        }
+        
+        .form-step {
+            display: none;
+        }
+        
+        .form-step.active {
+            display: block;
+            animation: fadeInUp 0.3s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .application-info {
+            padding: 60px 0;
+            background: white;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .info-card {
+            text-align: center;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .info-icon {
+            font-size: 2.5rem;
+            color: #3498db;
+            margin-bottom: 1rem;
+        }
+        
+        .info-card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .info-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .progress-steps {
+                gap: 1rem;
+            }
+            
+            .step {
+                font-size: 0.8rem;
+                padding: 0.3rem 0.8rem;
+            }
+            
+            .application-header h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Additional styles for new form sections */
+        .document-upload-info {
+            background: #e8f4f8;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border-left: 4px solid #3498db;
+        }
+
+        .document-upload-info ul {
+            margin: 1rem 0 0 1.5rem;
+            color: #555;
+        }
+
+        .document-upload-info li {
+            margin: 0.5rem 0;
+        }
+
+        .review-section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .review-section h4 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .review-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .review-label {
+            font-weight: 600;
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .review-value {
+            color: #2c3e50;
+            font-size: 1rem;
+        }
+
+        .declaration-section {
+            background: #fff3cd;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border-left: 4px solid #ffc107;
+        }
+
+        .declaration-section h4 {
+            color: #856404;
+            margin-bottom: 1rem;
+        }
+
+        .payment-info {
+            background: #d4edda;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #28a745;
+        }
+
+        .payment-info h4 {
+            color: #155724;
+            margin-bottom: 1rem;
+        }
+
+        .fee-details {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 6px;
+        }
+
+        .fee-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .fee-item.total {
+            border-top: 2px solid #28a745;
+            border-bottom: none;
+            margin-top: 0.5rem;
+            padding-top: 1rem;
+            font-size: 1.2rem;
+        }
+
+        input[type="file"] {
+            padding: 0.5rem;
+            border: 2px dashed #3498db;
+            border-radius: 6px;
+            background: #f8f9fa;
+            cursor: pointer;
+        }
+
+        input[type="file"]:hover {
+            background: #e9ecef;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: inherit;
+            resize: vertical;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+    </style>
+
+    <script>
+        // Populate review section when user reaches step 6
+        document.addEventListener('DOMContentLoaded', function() {
+            // Monitor step changes to populate review
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.target.id === 'step6' && mutation.target.classList.contains('active')) {
+                        populateReviewSection();
+                    }
+                });
+            });
+
+            const step6 = document.getElementById('step6');
+            if (step6) {
+                observer.observe(step6, { attributes: true, attributeFilter: ['class'] });
+            }
+        });
+
+        function populateReviewSection() {
+            // Personal Information
+            const personalData = {
+                'Application No': document.getElementById('applicationNo')?.value,
+                'Application Type': document.getElementById('applicationType')?.value,
+                'Full Name': `${document.getElementById('firstName')?.value} ${document.getElementById('middleName')?.value} ${document.getElementById('lastName')?.value}`,
+                'Date of Birth': document.getElementById('dateOfBirth')?.value,
+                'Place of Birth': document.getElementById('placeOfBirth')?.value,
+                'Gender': document.getElementById('gender')?.value,
+                'Marital Status': document.getElementById('maritalStatus')?.value,
+                'Citizenship': document.getElementById('citizenship')?.value,
+                'Email': document.getElementById('email')?.value,
+                'Phone': document.getElementById('phone')?.value,
+                'Aadhar Number': document.getElementById('aadharNumber')?.value,
+                'PAN Number': document.getElementById('panNumber')?.value
+            };
+            displayReviewData('reviewPersonal', personalData);
+
+            // Address Details
+            const addressData = {
+                'Present Address': `${document.getElementById('presentHouseNo')?.value}, ${document.getElementById('presentStreet')?.value}, ${document.getElementById('presentArea')?.value}, ${document.getElementById('presentCity')?.value}, ${document.getElementById('presentState')?.value} - ${document.getElementById('presentPincode')?.value}`,
+                'Permanent Address': `${document.getElementById('permanentHouseNo')?.value}, ${document.getElementById('permanentStreet')?.value}, ${document.getElementById('permanentArea')?.value}, ${document.getElementById('permanentCity')?.value}, ${document.getElementById('permanentState')?.value} - ${document.getElementById('permanentPincode')?.value}`
+            };
+            displayReviewData('reviewAddress', addressData);
+
+            // Family Details
+            const familyData = {
+                'Father Name': `${document.getElementById('fatherFirstName')?.value} ${document.getElementById('fatherMiddleName')?.value} ${document.getElementById('fatherLastName')?.value}`,
+                'Father Nationality': document.getElementById('fatherNationality')?.value,
+                'Mother Name': `${document.getElementById('motherFirstName')?.value} ${document.getElementById('motherMiddleName')?.value} ${document.getElementById('motherLastName')?.value}`,
+                'Mother Nationality': document.getElementById('motherNationality')?.value
+            };
+            if (document.getElementById('spouseFirstName')?.value) {
+                familyData['Spouse Name'] = `${document.getElementById('spouseFirstName')?.value} ${document.getElementById('spouseMiddleName')?.value} ${document.getElementById('spouseLastName')?.value}`;
+            }
+            displayReviewData('reviewFamily', familyData);
+
+            // Emergency Contact
+            const emergencyData = {
+                'Contact Person': document.getElementById('emergencyContactName')?.value,
+                'Relationship': document.getElementById('emergencyContactRelation')?.value,
+                'Phone': document.getElementById('emergencyContactPhone')?.value,
+                'Email': document.getElementById('emergencyContactEmail')?.value,
+                'Address': document.getElementById('emergencyContactAddress')?.value
+            };
+            displayReviewData('reviewEmergency', emergencyData);
+
+            // Documents
+            const documentsData = {
+                'Photograph': document.getElementById('photoUpload')?.files[0]?.name || 'Not uploaded',
+                'Aadhar Card': document.getElementById('aadharUpload')?.files[0]?.name || 'Not uploaded',
+                'Birth Certificate': document.getElementById('birthCertificateUpload')?.files[0]?.name || 'Not uploaded',
+                'Address Proof': document.getElementById('addressProofUpload')?.files[0]?.name || 'Not uploaded',
+                'PAN Card': document.getElementById('panCardUpload')?.files[0]?.name || 'Not uploaded'
+            };
+            displayReviewData('reviewDocuments', documentsData);
+        }
+
+        function displayReviewData(containerId, data) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+
+            container.innerHTML = '';
+            Object.keys(data).forEach(key => {
+                if (data[key] && data[key] !== 'undefined undefined' && data[key].trim()) {
+                    const reviewItem = document.createElement('div');
+                    reviewItem.className = 'review-item';
+                    reviewItem.innerHTML = `
+                        <span class="review-label">${key}:</span>
+                        <span class="review-value">${data[key]}</span>
+                    `;
+                    container.appendChild(reviewItem);
+                }
+            });
+        }
+
+        // Function to validate a specific step
+        function validateStep(stepNumber) {
+            const stepElement = document.getElementById(`step${stepNumber}`);
+            if (!stepElement) return true;
+
+            // Get all required fields in this step
+            const requiredInputs = stepElement.querySelectorAll('input[required], select[required], textarea[required]');
+            let isValid = true;
+            let firstInvalidField = null;
+            const errors = [];
+
+            requiredInputs.forEach(input => {
+                // Skip validation if the field is in a hidden section
+                if (input.closest('#permanentAddressSection') && document.getElementById('sameAsPermanent')?.checked) {
+                    return;
+                }
+
+                const label = input.closest('.form-group')?.querySelector('label')?.textContent || input.name;
+                
+                // Check if empty
+                if (!input.value || input.value.trim() === '') {
+                    isValid = false;
+                    input.style.borderColor = '#dc3545';
+                    if (!firstInvalidField) firstInvalidField = input;
+                    errors.push(`${label} is required`);
+                } else {
+                    // Validate specific field formats
+                    let formatValid = true;
+                    let formatError = '';
+
+                    // Email validation
+                    if (input.type === 'email') {
+                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        if (!emailRegex.test(input.value)) {
+                            formatValid = false;
+                            formatError = `${label} format is invalid`;
+                        }
+                    }
+
+                    // Phone validation (10 digits)
+                    if (input.type === 'tel') {
+                        const phoneRegex = /^[0-9]{10}$/;
+                        if (!phoneRegex.test(input.value.replace(/\s/g, ''))) {
+                            formatValid = false;
+                            formatError = `${label} must be 10 digits`;
+                        }
+                    }
+
+                    // Aadhar validation (12 digits)
+                    if (input.id === 'aadharNumber') {
+                        const aadharRegex = /^[0-9]{12}$/;
+                        if (!aadharRegex.test(input.value.replace(/\s/g, ''))) {
+                            formatValid = false;
+                            formatError = 'Aadhar Number must be 12 digits';
+                        }
+                    }
+
+                    // PAN validation (if filled)
+                    if (input.id === 'panNumber' && input.value) {
+                        const panRegex = /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
+                        if (!panRegex.test(input.value.toUpperCase())) {
+                            formatValid = false;
+                            formatError = 'PAN Number format is invalid (e.g., ABCDE1234F)';
+                        }
+                    }
+
+                    // Pincode validation (6 digits)
+                    if (input.name && input.name.includes('incode')) {
+                        const pincodeRegex = /^[0-9]{6}$/;
+                        if (!pincodeRegex.test(input.value)) {
+                            formatValid = false;
+                            formatError = `${label} must be 6 digits`;
+                        }
+                    }
+
+                    if (!formatValid) {
+                        isValid = false;
+                        input.style.borderColor = '#dc3545';
+                        if (!firstInvalidField) firstInvalidField = input;
+                        errors.push(formatError);
+                    } else {
+                        input.style.borderColor = '#28a745';
+                    }
+                }
+            });
+
+            // Show error notification if validation fails
+            if (!isValid) {
+                const errorMessage = errors.length > 0 ? errors[0] : 'Please fill all required fields correctly';
+                
+                // Show notification using DeshswaarUtils if available
+                if (typeof DeshswaarUtils !== 'undefined' && DeshswaarUtils.showNotification) {
+                    DeshswaarUtils.showNotification(errorMessage, 'error');
+                } else {
+                    alert(errorMessage);
+                }
+
+                // Focus on first invalid field
+                if (firstInvalidField) {
+                    firstInvalidField.focus();
+                    firstInvalidField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+
+            return isValid;
+        }
+
+        // Function to navigate to a specific step by clicking tabs
+        function goToStep(targetStep) {
+            // Access the global currentStep from application.js
+            if (typeof currentStep !== 'undefined') {
+                // Only validate when moving forward
+                if (targetStep > currentStep) {
+                    // Validate current step before moving forward
+                    if (!validateStep(currentStep)) {
+                        return; // Stop navigation if validation fails
+                    }
+                }
+
+                // Hide current step
+                const currentStepElement = document.getElementById(`step${currentStep}`);
+                if (currentStepElement) {
+                    currentStepElement.classList.remove('active');
+                }
+                
+                // Update global currentStep
+                window.currentStep = targetStep;
+                currentStep = targetStep;
+                
+                // Show target step
+                const targetStepElement = document.getElementById(`step${targetStep}`);
+                if (targetStepElement) {
+                    targetStepElement.classList.add('active');
+                }
+                
+                // Update UI using functions from application.js
+                if (typeof updateProgressBar === 'function') {
+                    updateProgressBar();
+                }
+                if (typeof updateStepIndicators === 'function') {
+                    updateStepIndicators();
+                }
+                if (typeof updateNavigationButtons === 'function') {
+                    updateNavigationButtons();
+                }
+                
+                // Populate review if on step 6
+                if (targetStep === 6) {
+                    populateReviewSection();
+                }
+                
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        // Reset border color on input change
+        document.addEventListener('DOMContentLoaded', function() {
+            const allInputs = document.querySelectorAll('input, select, textarea');
+            allInputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    if (this.style.borderColor === 'rgb(220, 53, 69)') { // Red color
+                        this.style.borderColor = '';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

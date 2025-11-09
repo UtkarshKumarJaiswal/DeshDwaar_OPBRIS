@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Forms - Deshswaar</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/downloads.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <h2><i class="fas fa-passport"></i> Deshswaar</h2>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="apply.html">Apply</a></li>
+                    <li><a href="renewal.html">Renewal</a></li>
+                    <li><a href="track.html">Track</a></li>
+                    <li><a href="downloads.html" class="active">Downloads</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1><i class="fas fa-download"></i> Download Forms & Documents</h1>
+                <p>Download official passport forms, guidelines, and documents</p>
+            </div>
+
+            <!-- Quick Search -->
+            <div class="search-section">
+                <div class="search-box">
+                    <input type="text" id="searchForms" placeholder="Search forms and documents...">
+                    <button type="button" onclick="searchForms()">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Categories -->
+            <div class="download-categories">
+                <div class="category-tabs">
+                    <button class="tab-btn active" onclick="showCategory('all')">
+                        <i class="fas fa-th-large"></i> All Documents
+                    </button>
+                    <button class="tab-btn" onclick="showCategory('forms')">
+                        <i class="fas fa-file-alt"></i> Application Forms
+                    </button>
+                    <button class="tab-btn" onclick="showCategory('guidelines')">
+                        <i class="fas fa-book"></i> Guidelines
+                    </button>
+                    <button class="tab-btn" onclick="showCategory('checklists')">
+                        <i class="fas fa-check-square"></i> Checklists
+                    </button>
+                    <button class="tab-btn" onclick="showCategory('fees')">
+                        <i class="fas fa-rupee-sign"></i> Fee Structure
+                    </button>
+                </div>
+            </div>
+
+            <!-- Download Grid -->
+            <div class="downloads-container">
+                <!-- Application Forms -->
+                <div class="download-section" data-category="forms">
+                    <h3><i class="fas fa-file-alt"></i> Application Forms</h3>
+                    <div class="download-grid">
+                        <div class="download-card">
+                            <div class="card-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="card-content">
+                                <h4>Fresh Passport Application Form</h4>
+                                <p>Form for new passport applications (36/60 pages)</p>
+                                <div class="card-meta">
+                                    <span class="file-type">PDF</span>
+                                    <span class="file-size">2.1 MB</span>
+                                    <span class="language">English/Hindi</span>
+                                </div>
+                            </div>
+                            <div class="card-actions">
+                                <button class="btn btn-primary" onclick="downloadFile('fresh-passport-form.pdf')">
+                                    <i class="fas fa-download"></i> Download
+                                </button>
+                                <button class="btn btn-secondary" onclick="previewFile('fresh-passport-form.pdf')">
+                                    <i class="fas fa-eye"></i> Preview
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="download-card">
+                            <div class="card-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="card-content">
+                                <h4>Passport Renewal Form</h4>
+                                <p>Form for passport renewal applications</p>
+                                <div class="card-meta">
+                                    <span class="file-type">PDF</span>
+                                    <span class="file-size">1.8 MB</span>
+                                    <span class="language">English/Hindi</span>
+                                </div>
+                            </div>
+                            <div class="card-actions">
+                                <button class="btn btn-primary" onclick="downloadFile('renewal-form.pdf')">
+                                    <i class="fas fa-download"></i> Download
+                                </button>
+                                <button class="btn btn-secondary" onclick="previewFile('renewal-form.pdf')">
+                                    <i class="fas fa-eye"></i> Preview
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="download-card">
+                            <div class="card-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="card-content">
+                                <h4>Re-issue Application Form</h4>
+                                <p>Form for damaged/lost passport re-issue</p>
+                                <div class="card-meta">
+                                    <span class="file-type">PDF</span>
+                                    <span class="file-size">2.0 MB</span>
+                                    <span class="language">English/Hindi</span>
+                                </div>
+                            </div>
+                            <div class="card-actions">
+                                <button class="btn btn-primary" onclick="downloadFile('reissue-form.pdf')">
+                                    <i class="fas fa-download"></i> Download
+                                </button>
+                                <button class="btn btn-secondary" onclick="previewFile('reissue-form.pdf')">
+                                    <i class="fas fa-eye"></i> Preview
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="download-card">
+                            <div class="card-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="card-content">
+                                <h4>Minor Passport Application</h4>
+                                <p>Form for passport applications for minors (below 18)</p>
+                                <div class="card-meta">
+                                    <span class="file-type">PDF</span>
+                                    <span class="file-size">2.3 MB</span>
+                                    <span class="language">English/Hindi</span>
+                                </div>
+                            </div>
+                            <div class="card-actions">
+                                <button class="btn btn-primary" onclick="downloadFile('minor-passport-form.pdf')">
+                                    <i class="fas fa-download"></i> Download
+                                </button>
+                                <button class="btn btn-secondary" onclick="previewFile('minor-passport-form.pdf')">
+                                    <i class="fas fa-eye"></i> Preview
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Guidelines -->
+                <div class="download-section" data-category="guidelines">
+                    <h3><i class="fas fa-book"></i> Guidelines & Instructions</h3>
+                    <div class="download-grid">
+                        <div class="download-card">
+                            <div class="card-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="card-content">
+                                <h4>Passport Application Guidelines</h4>
+                                <p>Complete guide for passport application process</p>
+                                <div class="card-meta">
+                                    <span class="file-type">PDF</span>
+                                    <span class="file-size">3.2 MB</span>
+                                    <span class="language">English/Hindi</span>
+                                </div>
+                            </div>
+                            <div class="card-actions">
+                                <button class="btn btn-primary" onclick="downloadFile('application-guidelines.pdf')">
+                                    <i class="fas fa-download"></i> Download
+                                </button>
+                                <button class="btn btn-secondary" onclick="previewFile('application-guidelines.pdf')">
+                                    <i class="fas fa-eye"></i> Preview
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="download-card">
+                            <div class="card-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="card-content">
+                                <h4>Document Requirements</h4>
+                                <p>List of required documents for different services</p>
+                                <div class="card-meta">
+                                    <span class="file-type">PDF</span>
+                                    <span class="file-size">1.5 MB</span>
+                                    <span class="language">English/Hindi</span>
+                                </div>
+                            </div>
+                            <div class="card-actions">
+                                <button class="btn btn-primary" onclick="downloadFile('document-requirements.pdf')">
+                                    <i class="fas fa-download"></i> Download
+                                </button>
+                                <button class="btn btn-secondary" onclick="previewFile('document-requirements.pdf')">
+                                    <i class="fas fa-eye"></i> Preview
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="download-card">
+                            <div class="card-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="card-content">
+                                <h4>Photo & Signature Guidelines</h4>
+                                <p>Guidelines for photograph and signature specifications</p>
+                                <div class="card-meta">
+                                    <span class="file-type">PDF</span>
+                                    <span class="file-size">2.8 MB</span>
+                                    <span class="language">English/Hindi</span>
+                                </div>
+                            </div>
+                            <div class="card-actions">
+                                <button class="btn btn-primary" onclick="downloadFile('photo-guidelines.pdf')">
+                                    <i class="fas fa-download"></i> Download
+                                </button>
+                                <button class="btn btn-secondary" onclick="previewFile('photo-guidelines.pdf')">
+                                    <i class="fas fa-eye"></i> Preview
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Checklists -->
+                <div class="download-section" data-category="checklists">
+                    <h3><i class="fas fa-check-square"></i> Document Checklists</h3>
+                    <div class="download-grid">
+                        <div class="download-card">
+                            <div class="card-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="card-content">
+                                <h4>Fresh Passport Checklist</h4>
+                                <p>Document checklist for new passport applications</p>
+                                <div class="card-meta">
+                                    <span class="file-type">PDF</span>
+                                    <span class="file-size">0.8 MB</span>
+                                    <span class="language">English/Hindi</span>
+                                </div>
+                            </div>
+                            <div class="card-actions">
+                                <button class="btn btn-primary" onclick="downloadFile('fresh-checklist.pdf')">
+                                    <i class="fas fa-download"></i> Download
+                                </button>
+                                <button class="btn btn-secondary" onclick="previewFile('fresh-checklist.pdf')">
+                                    <i class="fas fa-eye"></i> Preview
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="download-card">
+                            <div class="card-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="card-content">
+                                <h4>Renewal Checklist</h4>
+                                <p>Document checklist for passport renewal</p>
+                                <div class="card-meta">
+                                    <span class="file-type">PDF</span>
+                                    <span class="file-size">0.7 MB</span>
+                                    <span class="language">English/Hindi</span>
+                                </div>
+                            </div>
+                            <div class="card-actions">
+                                <button class="btn btn-primary" onclick="downloadFile('renewal-checklist.pdf')">
+                                    <i class="fas fa-download"></i> Download
+                                </button>
+                                <button class="btn btn-secondary" onclick="previewFile('renewal-checklist.pdf')">
+                                    <i class="fas fa-eye"></i> Preview
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="download-card">
+                            <div class="card-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="card-content">
+                                <h4>Minor Application Checklist</h4>
+                                <p>Document checklist for minor passport applications</p>
+                                <div class="card-meta">
+                                    <span class="file-type">PDF</span>
+                                    <span class="file-size">0.9 MB</span>
+                                    <span class="language">English/Hindi</span>
+                                </div>
+                            </div>
+                            <div class="card-actions">
+                                <button class="btn btn-primary" onclick="downloadFile('minor-checklist.pdf')">
+                                    <i class="fas fa-download"></i> Download
+                                </button>
+                                <button class="btn btn-secondary" onclick="previewFile('minor-checklist.pdf')">
+                                    <i class="fas fa-eye"></i> Preview
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fee Structure -->
+                <div class="download-section" data-category="fees">
+                    <h3><i class="fas fa-rupee-sign"></i> Fee Structure</h3>
+                    <div class="download-grid">
+                        <div class="download-card">
+                            <div class="card-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="card-content">
+                                <h4>Current Fee Structure</h4>
+                                <p>Official fee structure for all passport services</p>
+                                <div class="card-meta">
+                                    <span class="file-type">PDF</span>
+                                    <span class="file-size">1.2 MB</span>
+                                    <span class="language">English/Hindi</span>
+                                </div>
+                            </div>
+                            <div class="card-actions">
+                                <button class="btn btn-primary" onclick="downloadFile('fee-structure.pdf')">
+                                    <i class="fas fa-download"></i> Download
+                                </button>
+                                <button class="btn btn-secondary" onclick="previewFile('fee-structure.pdf')">
+                                    <i class="fas fa-eye"></i> Preview
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="download-card">
+                            <div class="card-icon">
+                                <i class="fas fa-file-excel"></i>
+                            </div>
+                            <div class="card-content">
+                                <h4>Fee Calculator</h4>
+                                <p>Excel sheet to calculate total fees for your application</p>
+                                <div class="card-meta">
+                                    <span class="file-type">XLSX</span>
+                                    <span class="file-size">0.3 MB</span>
+                                    <span class="language">English</span>
+                                </div>
+                            </div>
+                            <div class="card-actions">
+                                <button class="btn btn-primary" onclick="downloadFile('fee-calculator.xlsx')">
+                                    <i class="fas fa-download"></i> Download
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Download Statistics -->
+            <div class="download-stats">
+                <h3><i class="fas fa-chart-bar"></i> Popular Downloads</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">45,230</div>
+                        <div class="stat-label">Fresh Passport Forms</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">28,456</div>
+                        <div class="stat-label">Renewal Forms</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">15,678</div>
+                        <div class="stat-label">Guidelines Downloaded</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">12,345</div>
+                        <div class="stat-label">Checklists Downloaded</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Deshswaar - Government of India. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Preview Modal -->
+    <div class="modal" id="previewModal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3 id="previewTitle">Document Preview</h3>
+                <button class="close-btn" onclick="closePreview()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="preview-container" id="previewContainer">
+                    <!-- Preview content will be loaded here -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="downloadFromPreview()">
+                    <i class="fas fa-download"></i> Download
+                </button>
+                <button class="btn btn-secondary" onclick="closePreview()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api-config.js"></script>
+    <script src="js/downloads.js"></script>
+</body>
+</html>

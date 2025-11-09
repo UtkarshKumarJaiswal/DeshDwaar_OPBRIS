@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passport Renewal - Deshswaar</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="index.html"><h2><i class="fas fa-passport"></i> Deshswaar</h2></a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="login.html" class="login-btn">Login</a></li>
+                    <li><a href="register.html" class="register-btn">Register</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Renewal Section -->
+    <section class="renewal-section">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="application-header">
+                <h1><i class="fas fa-sync-alt"></i> Passport Renewal Application</h1>
+                <p>Renew your existing passport quickly and securely</p>
+
+                <!-- Progress Bar -->
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                </div>
+                <div class="progress-steps">
+                    <span class="step active">Passport Details</span>
+                    <span class="step">Personal Info</span>
+                    <span class="step">Address & Contact</span>
+                    <span class="step">Documents</span>
+                    <span class="step">Review</span>
+                </div>
+            </div>
+
+            <!-- Renewal Information Cards -->
+            <div class="info-cards-container">
+                <div class="info-banner">
+                    <div class="info-banner-item">
+                        <i class="fas fa-info-circle"></i>
+                        <div>
+                            <strong>Eligibility:</strong> Passport must be expiring within 1 year or expired within 3 years
+                        </div>
+                    </div>
+                    <div class="info-banner-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Processing:</strong> Normal (30-45 days) - ₹1,500 | Tatkaal (1-3 days) - ₹3,500
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Renewal Form -->
+            <form id="renewalForm" class="application-form">
+                <!-- Step 1: Current Passport Details -->
+                <div class="form-step active" id="step1">
+                    <div class="form-section">
+                        <h3><i class="fas fa-passport"></i> Current Passport Details</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="renewalApplicationNo">Renewal Application Number</label>
+                                <input type="text" id="renewalApplicationNo" name="renewalApplicationNo" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="renewalType">Renewal Type *</label>
+                                <select id="renewalType" name="renewalType" required>
+                                    <option value="">Select Renewal Type</option>
+                                    <option value="normal">Normal (30-45 days) - ₹1,500</option>
+                                    <option value="tatkaal">Tatkaal (1-3 days) - ₹3,500</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="currentPassportNo">Current Passport Number *</label>
+                                <input type="text" id="currentPassportNo" name="currentPassportNo" 
+                                       placeholder="Enter your current passport number (e.g., A1234567)" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="fileNumber">File Number</label>
+                                <input type="text" id="fileNumber" name="fileNumber" 
+                                       placeholder="If available from previous passport">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="issueDate">Date of Issue *</label>
+                                <input type="date" id="issueDate" name="issueDate" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="expiryDate">Date of Expiry *</label>
+                                <input type="date" id="expiryDate" name="expiryDate" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="issuingOffice">Issuing Office *</label>
+                                <select id="issuingOffice" name="issuingOffice" required>
+                                    <option value="">Select Issuing Office</option>
+                                    <option value="new-delhi">New Delhi</option>
+                                    <option value="mumbai">Mumbai</option>
+                                    <option value="chennai">Chennai</option>
+                                    <option value="kolkata">Kolkata</option>
+                                    <option value="hyderabad">Hyderabad</option>
+                                    <option value="bangalore">Bangalore</option>
+                                    <option value="ahmedabad">Ahmedabad</option>
+                                    <option value="pune">Pune</option>
+                                    <option value="lucknow">Lucknow</option>
+                                    <option value="chandigarh">Chandigarh</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="bookletType">Booklet Type *</label>
+                                <select id="bookletType" name="bookletType" required>
+                                    <option value="">Select Booklet Type</option>
+                                    <option value="36-pages">36 Pages - Standard</option>
+                                    <option value="60-pages">60 Pages - Additional ₹500</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reasonForRenewal">Reason for Renewal *</label>
+                            <select id="reasonForRenewal" name="reasonForRenewal" required>
+                                <option value="">Select Reason</option>
+                                <option value="validity-expired">Validity Expired Within 3 Years</option>
+                                <option value="validity-expiring">Validity Expiring Soon (Within 1 Year)</option>
+                                <option value="pages-exhausted">Pages Exhausted</option>
+                                <option value="damaged-passport">Damaged Passport</option>
+                                <option value="lost-passport">Lost Passport</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Personal Information -->
+                <div class="form-step" id="step2">
+                    <div class="form-section">
+                        <h3><i class="fas fa-user"></i> Personal Information</h3>
+                        <p class="form-note"><i class="fas fa-info-circle"></i> Please ensure the details match your current passport</p>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" 
+                                       placeholder="As per current passport" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="middleName">Middle Name</label>
+                                <input type="text" id="middleName" name="middleName" 
+                                       placeholder="As per current passport">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" 
+                                       placeholder="As per current passport" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="dateOfBirth">Date of Birth *</label>
+                                <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="placeOfBirth">Place of Birth *</label>
+                                <input type="text" id="placeOfBirth" name="placeOfBirth" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="gender">Gender *</label>
+                                <select id="gender" name="gender" required>
+                                    <option value="">Select Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="maritalStatus">Marital Status *</label>
+                                <select id="maritalStatus" name="maritalStatus" required>
+                                    <option value="">Select Marital Status</option>
+                                    <option value="single">Single</option>
+                                    <option value="married">Married</option>
+                                    <option value="divorced">Divorced</option>
+                                    <option value="widowed">Widowed</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="citizenship">Citizenship *</label>
+                                <select id="citizenship" name="citizenship" required>
+                                    <option value="">Select Citizenship</option>
+                                    <option value="indian">Indian</option>
+                                    <option value="dual">Dual Citizenship</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="aadharNumber">Aadhar Number *</label>
+                                <input type="text" id="aadharNumber" name="aadharNumber" 
+                                       placeholder="XXXX XXXX XXXX" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="panNumber">PAN Number</label>
+                                <input type="text" id="panNumber" name="panNumber" 
+                                       placeholder="ABCDE1234F">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Address & Contact -->
+                <div class="form-step" id="step3">
+                    <div class="form-section">
+                        <h3><i class="fas fa-home"></i> Current Address Details</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="houseNo">House No./Flat No. *</label>
+                                <input type="text" id="houseNo" name="houseNo" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="street">Street/Lane *</label>
+                                <input type="text" id="street" name="street" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="area">Area/Locality *</label>
+                                <input type="text" id="area" name="area" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="city">City *</label>
+                                <input type="text" id="city" name="city" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="state">State *</label>
+                                <select id="state" name="state" required>
+                                    <option value="">Select State</option>
+                                    <option value="andhra-pradesh">Andhra Pradesh</option>
+                                    <option value="delhi">Delhi</option>
+                                    <option value="gujarat">Gujarat</option>
+                                    <option value="karnataka">Karnataka</option>
+                                    <option value="maharashtra">Maharashtra</option>
+                                    <option value="tamil-nadu">Tamil Nadu</option>
+                                    <option value="west-bengal">West Bengal</option>
+                                    <option value="punjab">Punjab</option>
+                                    <option value="rajasthan">Rajasthan</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="pincode">PIN Code *</label>
+                                <input type="text" id="pincode" name="pincode" 
+                                       pattern="[0-9]{6}" placeholder="6-digit PIN code" required>
+                            </div>
+                        </div>
+
+                        <h4>Contact Information</h4>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Mobile Number *</label>
+                                <input type="tel" id="phone" name="phone" 
+                                       placeholder="10-digit mobile number" required>
+                            </div>
+                        </div>
+
+                        <h4>Emergency Contact</h4>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="emergencyContactName">Emergency Contact Name *</label>
+                                <input type="text" id="emergencyContactName" name="emergencyContactName" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="emergencyContactPhone">Emergency Contact Phone *</label>
+                                <input type="tel" id="emergencyContactPhone" name="emergencyContactPhone" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4: Document Upload -->
+                <div class="form-step" id="step4">
+                    <div class="form-section">
+                        <h3><i class="fas fa-folder-open"></i> Document Upload</h3>
+                        
+                        <div class="document-upload-info">
+                            <p><i class="fas fa-info-circle"></i> Please upload clear scanned copies or photographs of the following documents:</p>
+                            <ul>
+                                <li>File formats: JPG, PNG, PDF</li>
+                                <li>Maximum file size: 5MB per document</li>
+                                <li>All documents should be clearly readable</li>
+                            </ul>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="currentPassportUpload">Current Passport (First & Last Page) *</label>
+                            <input type="file" id="currentPassportUpload" name="currentPassportUpload" 
+                                   accept="image/*,.pdf" required>
+                            <small>Upload clear copy of first and last page of your current passport</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="photographUpload">Recent Photograph (Passport Size) *</label>
+                            <input type="file" id="photographUpload" name="photographUpload" 
+                                   accept="image/*" required>
+                            <small>White background, 35mm x 45mm, recent color photo taken within last 6 months</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="addressProofUpload">Address Proof *</label>
+                            <input type="file" id="addressProofUpload" name="addressProofUpload" 
+                                   accept="image/*,.pdf" required>
+                            <small>Aadhar Card, Voter ID, Electricity Bill, or Bank Statement (not older than 3 months)</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="aadharUpload">Aadhar Card *</label>
+                            <input type="file" id="aadharUpload" name="aadharUpload" 
+                                   accept="image/*,.pdf" required>
+                            <small>Clear copy of your Aadhar card (front and back)</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="panCardUpload">PAN Card</label>
+                            <input type="file" id="panCardUpload" name="panCardUpload" 
+                                   accept="image/*,.pdf">
+                            <small>Optional but recommended for faster processing</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 5: Review -->
+                <div class="form-step" id="step5">
+                    <div class="form-section">
+                        <h3><i class="fas fa-check-circle"></i> Review Your Renewal Application</h3>
+                        
+                        <div class="review-section">
+                            <h4>Passport Details</h4>
+                            <div class="review-grid" id="reviewPassport"></div>
+                        </div>
+
+                        <div class="review-section">
+                            <h4>Personal Information</h4>
+                            <div class="review-grid" id="reviewPersonal"></div>
+                        </div>
+
+                        <div class="review-section">
+                            <h4>Address & Contact Details</h4>
+                            <div class="review-grid" id="reviewAddress"></div>
+                        </div>
+
+                        <div class="review-section">
+                            <h4>Uploaded Documents</h4>
+                            <div class="review-grid" id="reviewDocuments"></div>
+                        </div>
+
+                        <div class="declaration-section">
+                            <h4>Declaration</h4>
+                            <div class="form-group">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" id="declaration" name="declaration" required>
+                                    <span class="checkmark"></span>
+                                    I hereby declare that the information provided above is true and correct to the best of my knowledge and belief. I understand that any false information may lead to rejection of my renewal application and/or legal action.
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="payment-info">
+                            <h4>Payment Information</h4>
+                            <p>After submission, you will be redirected to the payment page to complete the renewal fee payment.</p>
+                            <div class="fee-details" id="feeDetails">
+                                <div class="fee-item">
+                                    <span>Renewal Fee:</span>
+                                    <strong id="renewalFee">₹1,500</strong>
+                                </div>
+                                <div class="fee-item">
+                                    <span>Booklet Type:</span>
+                                    <strong id="bookletFee">Standard (36 pages)</strong>
+                                </div>
+                                <div class="fee-item">
+                                    <span>Processing Fee:</span>
+                                    <strong>₹500</strong>
+                                </div>
+                                <div class="fee-item total">
+                                    <span>Total Amount:</span>
+                                    <strong id="totalFee">₹2,000</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="form-navigation">
+                    <button type="button" id="prevBtn" class="btn btn-secondary" 
+                            onclick="changeRenewalStep(-1)" style="display: none;">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </button>
+                    <button type="button" id="nextBtn" class="btn btn-primary" 
+                            onclick="changeRenewalStep(1)">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button type="submit" id="submitBtn" class="btn btn-primary" style="display: none;">
+                        <i class="fas fa-paper-plane"></i> Submit Renewal Application
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-passport"></i> Deshswaar</h3>
+                    <p>Your trusted partner for all passport services.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="help.html">Help Center</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Deshswaar - Government of India. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+
+    <style>
+        .renewal-section {
+            padding: 120px 0 80px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            min-height: 100vh;
+        }
+
+        .info-cards-container {
+            margin-bottom: 2rem;
+        }
+
+        .info-banner {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1.5rem;
+            border-radius: 10px;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .info-banner-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .info-banner-item i {
+            font-size: 2rem;
+        }
+
+        .form-note {
+            background: #fff3cd;
+            padding: 1rem;
+            border-left: 4px solid #ffc107;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Additional responsive styles */
+        @media (max-width: 768px) {
+            .info-banner {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .info-banner-item {
+                min-width: 100%;
+            }
+        }
+    </style>
+
+    <script>
+        // Renewal Form JavaScript
+        let currentRenewalStep = 1;
+        const totalRenewalSteps = 5;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeRenewalForm();
+            generateRenewalApplicationNumber();
+            setupFeeCalculation();
+        });
+
+        function initializeRenewalForm() {
+            updateRenewalProgressBar();
+            updateRenewalStepIndicators();
+            updateRenewalNavigationButtons();
+        }
+
+        function generateRenewalApplicationNumber() {
+            const appNoField = document.getElementById('renewalApplicationNo');
+            if (appNoField) {
+                const timestamp = Date.now();
+                const random = Math.floor(Math.random() * 1000);
+                const applicationNo = `REN${timestamp}${random}`;
+                appNoField.value = applicationNo;
+            }
+        }
+
+        function setupFeeCalculation() {
+            const renewalTypeSelect = document.getElementById('renewalType');
+            const bookletTypeSelect = document.getElementById('bookletType');
+
+            if (renewalTypeSelect) {
+                renewalTypeSelect.addEventListener('change', calculateTotalFee);
+            }
+            if (bookletTypeSelect) {
+                bookletTypeSelect.addEventListener('change', calculateTotalFee);
+            }
+        }
+
+        function calculateTotalFee() {
+            const renewalType = document.getElementById('renewalType')?.value;
+            const bookletType = document.getElementById('bookletType')?.value;
+
+            let renewalFee = renewalType === 'tatkaal' ? 3500 : 1500;
+            let bookletFee = bookletType === '60-pages' ? 500 : 0;
+            let processingFee = 500;
+            let total = renewalFee + bookletFee + processingFee;
+
+            // Update review section
+            document.getElementById('renewalFee')?.textContent = `₹${renewalFee.toLocaleString()}`;
+            document.getElementById('bookletFee')?.textContent = bookletType === '60-pages' ? '60 pages (+₹500)' : 'Standard (36 pages)';
+            document.getElementById('totalFee')?.textContent = `₹${total.toLocaleString()}`;
+        }
+
+        function changeRenewalStep(direction) {
+            const currentStepElement = document.getElementById(`step${currentRenewalStep}`);
+            
+            // Validate current step before moving forward
+            if (direction > 0 && !validateRenewalStep()) {
+                return;
+            }
+            
+            // Hide current step
+            currentStepElement.classList.remove('active');
+            
+            // Update current step
+            currentRenewalStep += direction;
+            
+            // Show new step
+            const newStepElement = document.getElementById(`step${currentRenewalStep}`);
+            if (newStepElement) {
+                newStepElement.classList.add('active');
+            }
+            
+            // Populate review if on last step
+            if (currentRenewalStep === totalRenewalSteps) {
+                populateRenewalReview();
+            }
+            
+            // Update UI
+            updateRenewalProgressBar();
+            updateRenewalStepIndicators();
+            updateRenewalNavigationButtons();
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function validateRenewalStep() {
+            const currentStepElement = document.getElementById(`step${currentRenewalStep}`);
+            const requiredFields = currentStepElement.querySelectorAll('input[required], select[required]');
+            
+            let isValid = true;
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    isValid = false;
+                    field.style.borderColor = '#e74c3c';
+                } else {
+                    field.style.borderColor = '#ddd';
+                }
+            });
+            
+            if (!isValid) {
+                alert('Please fill all required fields');
+            }
+            
+            return isValid;
+        }
+
+        function updateRenewalProgressBar() {
+            const progressFill = document.getElementById('progressFill');
+            const progressPercent = ((currentRenewalStep - 1) / (totalRenewalSteps - 1)) * 100;
+            progressFill.style.width = `${progressPercent}%`;
+        }
+
+        function updateRenewalStepIndicators() {
+            const steps = document.querySelectorAll('.step');
+            steps.forEach((step, index) => {
+                step.classList.remove('active', 'completed');
+                
+                if (index + 1 === currentRenewalStep) {
+                    step.classList.add('active');
+                } else if (index + 1 < currentRenewalStep) {
+                    step.classList.add('completed');
+                }
+            });
+        }
+
+        function updateRenewalNavigationButtons() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const submitBtn = document.getElementById('submitBtn');
+            
+            prevBtn.style.display = currentRenewalStep === 1 ? 'none' : 'inline-block';
+            
+            if (currentRenewalStep === totalRenewalSteps) {
+                nextBtn.style.display = 'none';
+                submitBtn.style.display = 'inline-block';
+            } else {
+                nextBtn.style.display = 'inline-block';
+                submitBtn.style.display = 'none';
+            }
+        }
+
+        function populateRenewalReview() {
+            // Passport Details
+            const passportData = {
+                'Application Number': document.getElementById('renewalApplicationNo')?.value,
+                'Renewal Type': document.getElementById('renewalType')?.selectedOptions[0]?.text,
+                'Current Passport Number': document.getElementById('currentPassportNo')?.value,
+                'Issue Date': document.getElementById('issueDate')?.value,
+                'Expiry Date': document.getElementById('expiryDate')?.value,
+                'Issuing Office': document.getElementById('issuingOffice')?.selectedOptions[0]?.text,
+                'Booklet Type': document.getElementById('bookletType')?.selectedOptions[0]?.text,
+                'Reason for Renewal': document.getElementById('reasonForRenewal')?.selectedOptions[0]?.text
+            };
+            displayReviewData('reviewPassport', passportData);
+
+            // Personal Information
+            const personalData = {
+                'Full Name': `${document.getElementById('firstName')?.value} ${document.getElementById('middleName')?.value} ${document.getElementById('lastName')?.value}`,
+                'Date of Birth': document.getElementById('dateOfBirth')?.value,
+                'Place of Birth': document.getElementById('placeOfBirth')?.value,
+                'Gender': document.getElementById('gender')?.value,
+                'Marital Status': document.getElementById('maritalStatus')?.value,
+                'Citizenship': document.getElementById('citizenship')?.value,
+                'Aadhar Number': document.getElementById('aadharNumber')?.value,
+                'PAN Number': document.getElementById('panNumber')?.value || 'Not provided'
+            };
+            displayReviewData('reviewPersonal', personalData);
+
+            // Address & Contact
+            const addressData = {
+                'Address': `${document.getElementById('houseNo')?.value}, ${document.getElementById('street')?.value}, ${document.getElementById('area')?.value}`,
+                'City': document.getElementById('city')?.value,
+                'State': document.getElementById('state')?.selectedOptions[0]?.text,
+                'PIN Code': document.getElementById('pincode')?.value,
+                'Email': document.getElementById('email')?.value,
+                'Mobile': document.getElementById('phone')?.value,
+                'Emergency Contact': document.getElementById('emergencyContactName')?.value,
+                'Emergency Phone': document.getElementById('emergencyContactPhone')?.value
+            };
+            displayReviewData('reviewAddress', addressData);
+
+            // Documents
+            const documentsData = {
+                'Current Passport': document.getElementById('currentPassportUpload')?.files[0]?.name || 'Not uploaded',
+                'Photograph': document.getElementById('photographUpload')?.files[0]?.name || 'Not uploaded',
+                'Address Proof': document.getElementById('addressProofUpload')?.files[0]?.name || 'Not uploaded',
+                'Aadhar Card': document.getElementById('aadharUpload')?.files[0]?.name || 'Not uploaded',
+                'PAN Card': document.getElementById('panCardUpload')?.files[0]?.name || 'Not uploaded'
+            };
+            displayReviewData('reviewDocuments', documentsData);
+
+            calculateTotalFee();
+        }
+
+        function displayReviewData(containerId, data) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+
+            container.innerHTML = '';
+            Object.keys(data).forEach(key => {
+                if (data[key] && data[key] !== 'undefined undefined' && data[key].trim()) {
+                    const reviewItem = document.createElement('div');
+                    reviewItem.className = 'review-item';
+                    reviewItem.innerHTML = `
+                        <span class="review-label">${key}:</span>
+                        <span class="review-value">${data[key]}</span>
+                    `;
+                    container.appendChild(reviewItem);
+                }
+            });
+        }
+
+        // Form submission
+        document.getElementById('renewalForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const declaration = document.getElementById('declaration');
+            if (!declaration?.checked) {
+                alert('Please accept the declaration to proceed');
+                return;
+            }
+
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.innerHTML = '<span class="loading"></span> Submitting Application...';
+            submitBtn.disabled = true;
+
+            // Simulate submission
+            setTimeout(() => {
+                alert('Renewal application submitted successfully!');
+                window.location.href = 'dashboard.html';
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

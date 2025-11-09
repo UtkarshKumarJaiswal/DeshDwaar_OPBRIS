@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passport Renewal - Deshswaar</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <h2><i class="fas fa-passport"></i> Deshswaar</h2>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="apply.html">Apply</a></li>
+                    <li><a href="renewal.html" class="active">Renewal</a></li>
+                    <li><a href="track.html">Track</a></li>
+                    <li><a href="appointments.html">Appointments</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1><i class="fas fa-sync-alt"></i> Passport Renewal</h1>
+                <p>Renew your existing passport quickly and securely</p>
+            </div>
+
+            <!-- Renewal Information -->
+            <div class="info-section">
+                <div class="info-card">
+                    <h3><i class="fas fa-info-circle"></i> Renewal Requirements</h3>
+                    <ul class="requirements-list">
+                        <li><i class="fas fa-check"></i> Current passport (original)</li>
+                        <li><i class="fas fa-check"></i> Passport must be expiring within 1 year or expired within 3 years</li>
+                        <li><i class="fas fa-check"></i> No changes in personal particulars</li>
+                        <li><i class="fas fa-check"></i> No ECR/ECNR status change required</li>
+                        <li><i class="fas fa-check"></i> Valid proof of address</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3><i class="fas fa-clock"></i> Processing Time</h3>
+                    <div class="processing-options">
+                        <div class="option">
+                            <strong>Normal:</strong> 30-45 days<br>
+                            <span class="fee">₹1,500</span>
+                        </div>
+                        <div class="option">
+                            <strong>Tatkaal:</strong> 1-3 days<br>
+                            <span class="fee">₹3,500</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Renewal Form -->
+            <div class="form-container">
+                <form id="renewalForm" class="renewal-form">
+                    <div class="form-section">
+                        <h3><i class="fas fa-user"></i> Current Passport Details</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="currentPassportNo">Current Passport Number *</label>
+                                <input type="text" id="currentPassportNo" name="currentPassportNo" 
+                                       placeholder="Enter your current passport number" required>
+                                <div class="form-help">Format: A1234567</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="issueDate">Date of Issue *</label>
+                                <input type="date" id="issueDate" name="issueDate" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="expiryDate">Date of Expiry *</label>
+                                <input type="date" id="expiryDate" name="expiryDate" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="issuingOffice">Issuing Office *</label>
+                                <select id="issuingOffice" name="issuingOffice" required>
+                                    <option value="">Select Issuing Office</option>
+                                    <option value="new-delhi">New Delhi</option>
+                                    <option value="mumbai">Mumbai</option>
+                                    <option value="chennai">Chennai</option>
+                                    <option value="kolkata">Kolkata</option>
+                                    <option value="hyderabad">Hyderabad</option>
+                                    <option value="bangalore">Bangalore</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3><i class="fas fa-address-card"></i> Personal Information</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="renewalFirstName">First Name *</label>
+                                <input type="text" id="renewalFirstName" name="firstName" 
+                                       placeholder="As per current passport" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="renewalLastName">Last Name *</label>
+                                <input type="text" id="renewalLastName" name="lastName" 
+                                       placeholder="As per current passport" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="renewalDob">Date of Birth *</label>
+                                <input type="date" id="renewalDob" name="dateOfBirth" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="renewalGender">Gender *</label>
+                                <select id="renewalGender" name="gender" required>
+                                    <option value="">Select Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3><i class="fas fa-home"></i> Current Address</h3>
+                        
+                        <div class="form-group">
+                            <label for="renewalAddress">Address Line 1 *</label>
+                            <input type="text" id="renewalAddress" name="address" 
+                                   placeholder="House/Flat No., Street" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="renewalCity">City *</label>
+                                <input type="text" id="renewalCity" name="city" 
+                                       placeholder="Enter your city" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="renewalState">State *</label>
+                                <select id="renewalState" name="state" required>
+                                    <option value="">Select State</option>
+                                    <option value="andhra-pradesh">Andhra Pradesh</option>
+                                    <option value="delhi">Delhi</option>
+                                    <option value="gujarat">Gujarat</option>
+                                    <option value="karnataka">Karnataka</option>
+                                    <option value="maharashtra">Maharashtra</option>
+                                    <option value="tamil-nadu">Tamil Nadu</option>
+                                    <option value="west-bengal">West Bengal</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="renewalPincode">PIN Code *</label>
+                                <input type="text" id="renewalPincode" name="pincode" 
+                                       placeholder="6-digit PIN code" pattern="[0-9]{6}" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="renewalPhone">Mobile Number *</label>
+                                <input type="tel" id="renewalPhone" name="phone" 
+                                       placeholder="10-digit mobile number" pattern="[0-9]{10}" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3><i class="fas fa-cog"></i> Renewal Options</h3>
+                        
+                        <div class="form-group">
+                            <label for="renewalType">Renewal Type *</label>
+                            <select id="renewalType" name="renewalType" required>
+                                <option value="">Select Renewal Type</option>
+                                <option value="normal">Normal (30-45 days) - ₹1,500</option>
+                                <option value="tatkaal">Tatkaal (1-3 days) - ₹3,500</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="bookletType">Booklet Type *</label>
+                            <select id="bookletType" name="bookletType" required>
+                                <option value="">Select Booklet Type</option>
+                                <option value="36-pages">36 Pages</option>
+                                <option value="60-pages">60 Pages (+₹500)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3><i class="fas fa-upload"></i> Document Upload</h3>
+                        
+                        <div class="document-upload">
+                            <div class="upload-item">
+                                <label for="currentPassportCopy">Current Passport (First & Last Page) *</label>
+                                <input type="file" id="currentPassportCopy" name="currentPassportCopy" 
+                                       accept=".jpg,.jpeg,.png,.pdf" required>
+                                <div class="upload-help">Max size: 2MB, Formats: JPG, PNG, PDF</div>
+                            </div>
+
+                            <div class="upload-item">
+                                <label for="addressProof">Address Proof *</label>
+                                <input type="file" id="addressProof" name="addressProof" 
+                                       accept=".jpg,.jpeg,.png,.pdf" required>
+                                <div class="upload-help">Aadhaar, Voter ID, Utility Bill</div>
+                            </div>
+
+                            <div class="upload-item">
+                                <label for="photograph">Recent Photograph *</label>
+                                <input type="file" id="photograph" name="photograph" 
+                                       accept=".jpg,.jpeg,.png" required>
+                                <div class="upload-help">White background, 2x2 inches</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="window.history.back()">
+                            <i class="fas fa-arrow-left"></i> Back
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> Submit Renewal Application
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Deshswaar - Government of India. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/api-config.js"></script>
+    <script src="js/renewal.js"></script>
+</body>
+</html>

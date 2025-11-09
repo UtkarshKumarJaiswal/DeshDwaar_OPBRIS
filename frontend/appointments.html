@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment - Deshswaar</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/appointments.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <h2><i class="fas fa-passport"></i> Deshswaar</h2>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="apply.html">Apply</a></li>
+                    <li><a href="renewal.html">Renewal</a></li>
+                    <li><a href="track.html">Track</a></li>
+                    <li><a href="appointments.html" class="active">Appointments</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1><i class="fas fa-calendar-check"></i> Book Appointment</h1>
+                <p>Schedule your visit to the Passport Seva Kendra (PSK)</p>
+            </div>
+
+            <!-- Appointment Process Steps -->
+            <div class="appointment-steps">
+                <div class="step active">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Application Details</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Select Center</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Choose Date & Time</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-title">Confirmation</div>
+                </div>
+            </div>
+
+            <!-- Appointment Form -->
+            <div class="appointment-container">
+                <!-- Step 1: Application Details -->
+                <div class="appointment-step active" id="step1">
+                    <div class="step-content">
+                        <h3><i class="fas fa-file-alt"></i> Application Details</h3>
+                        
+                        <form id="appointmentStep1">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="applicationNumber">Application Number *</label>
+                                    <input type="text" id="applicationNumber" name="applicationNumber" 
+                                           placeholder="DESH12345678901" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="appointmentDob">Date of Birth *</label>
+                                    <input type="date" id="appointmentDob" name="dateOfBirth" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="applicantName">Applicant Name *</label>
+                                    <input type="text" id="applicantName" name="applicantName" 
+                                           placeholder="As per application" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="appointmentType">Appointment Type *</label>
+                                    <select id="appointmentType" name="appointmentType" required>
+                                        <option value="">Select Appointment Type</option>
+                                        <option value="fresh">Fresh Passport</option>
+                                        <option value="renewal">Passport Renewal</option>
+                                        <option value="reissue">Passport Re-issue</option>
+                                        <option value="damaged">Damaged Passport</option>
+                                        <option value="lost">Lost Passport</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="step-actions">
+                                <button type="button" class="btn btn-primary" onclick="nextStep(2)">
+                                    Next <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Step 2: Select Center -->
+                <div class="appointment-step" id="step2">
+                    <div class="step-content">
+                        <h3><i class="fas fa-map-marker-alt"></i> Select Passport Seva Kendra</h3>
+                        
+                        <div class="location-selector">
+                            <div class="form-group">
+                                <label for="state">State/UT *</label>
+                                <select id="state" name="state" onchange="loadCenters()">
+                                    <option value="">Select State</option>
+                                    <option value="delhi">Delhi</option>
+                                    <option value="maharashtra">Maharashtra</option>
+                                    <option value="karnataka">Karnataka</option>
+                                    <option value="tamil-nadu">Tamil Nadu</option>
+                                    <option value="gujarat">Gujarat</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="centers-grid" id="centersGrid">
+                            <!-- Centers will be loaded dynamically -->
+                        </div>
+
+                        <div class="step-actions">
+                            <button type="button" class="btn btn-secondary" onclick="prevStep(1)">
+                                <i class="fas fa-arrow-left"></i> Previous
+                            </button>
+                            <button type="button" class="btn btn-primary" onclick="nextStep(3)" disabled id="step2Next">
+                                Next <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Choose Date & Time -->
+                <div class="appointment-step" id="step3">
+                    <div class="step-content">
+                        <h3><i class="fas fa-calendar-alt"></i> Select Date & Time</h3>
+                        
+                        <div class="datetime-selector">
+                            <div class="calendar-section">
+                                <h4>Available Dates</h4>
+                                <div class="calendar-grid" id="calendarGrid">
+                                    <!-- Calendar will be generated dynamically -->
+                                </div>
+                            </div>
+
+                            <div class="time-section">
+                                <h4>Available Time Slots</h4>
+                                <div class="time-slots" id="timeSlots">
+                                    <!-- Time slots will be loaded based on selected date -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="selected-appointment">
+                            <h4>Selected Appointment</h4>
+                            <div class="appointment-summary" id="appointmentSummary">
+                                <p>Please select date and time</p>
+                            </div>
+                        </div>
+
+                        <div class="step-actions">
+                            <button type="button" class="btn btn-secondary" onclick="prevStep(2)">
+                                <i class="fas fa-arrow-left"></i> Previous
+                            </button>
+                            <button type="button" class="btn btn-primary" onclick="nextStep(4)" disabled id="step3Next">
+                                Next <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4: Confirmation -->
+                <div class="appointment-step" id="step4">
+                    <div class="step-content">
+                        <h3><i class="fas fa-check-circle"></i> Appointment Confirmation</h3>
+                        
+                        <div class="confirmation-details">
+                            <div class="detail-card">
+                                <h4><i class="fas fa-user"></i> Applicant Details</h4>
+                                <div id="applicantDetails"></div>
+                            </div>
+
+                            <div class="detail-card">
+                                <h4><i class="fas fa-calendar"></i> Appointment Details</h4>
+                                <div id="appointmentDetails"></div>
+                            </div>
+
+                            <div class="detail-card">
+                                <h4><i class="fas fa-exclamation-triangle"></i> Important Instructions</h4>
+                                <ul class="instructions-list">
+                                    <li>Arrive 15 minutes before your scheduled time</li>
+                                    <li>Bring all original documents and photocopies</li>
+                                    <li>Carry the appointment confirmation</li>
+                                    <li>No electronic devices allowed inside PSK</li>
+                                    <li>Dress code: Formal attire required</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="step-actions">
+                            <button type="button" class="btn btn-secondary" onclick="prevStep(3)">
+                                <i class="fas fa-arrow-left"></i> Previous
+                            </button>
+                            <button type="button" class="btn btn-success" onclick="confirmAppointment()">
+                                <i class="fas fa-check"></i> Confirm Appointment
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Appointment Success Modal -->
+            <div class="modal" id="successModal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3><i class="fas fa-check-circle text-success"></i> Appointment Booked Successfully!</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="success-details" id="successDetails"></div>
+                        <div class="qr-code">
+                            <div id="appointmentQR"></div>
+                            <p>Show this QR code at the PSK</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" onclick="downloadAppointment()">
+                            <i class="fas fa-download"></i> Download Confirmation
+                        </button>
+                        <button class="btn btn-secondary" onclick="closeModal()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Deshswaar - Government of India. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/api-config.js"></script>
+    <script src="js/appointments.js"></script>
+</body>
+</html>
