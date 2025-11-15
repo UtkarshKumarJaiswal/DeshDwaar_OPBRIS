@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apply for Passport - Deshswaar</title>
+    <title>Apply for Passport - DeshDwaar</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
@@ -14,7 +15,7 @@
         <nav class="navbar">
             <div class="nav-container">
                 <div class="logo">
-                    <a href="index.html"><h2><i class="fas fa-passport"></i> Deshswaar</h2></a>
+                    <a href="index.html"><h2><i class="fas fa-passport"></i> DeshDwaar</h2></a>
                 </div>
                 <ul class="nav-menu">
                     <li><a href="index.html">Home</a></li>
@@ -603,6 +604,8 @@
                             </div>
                         </div>
                     </div>
+
+                    
                 </div>
 
                 <!-- Navigation Buttons -->
@@ -613,7 +616,7 @@
                     <!-- <button type="button" id="nextBtn" class="btn btn-primary" onclick="console.log('Next button clicked!'); changeStep(1);">
                         Next <i class="fas fa-arrow-right"></i> -->
                     </button>
-                    <button type="submit" id="submitBtn" class="btn btn-primary" style="display: none;">
+                    <button type="submit" id="submitBtn" class="btn btn-primary btn-lg" style="display: none; width: 100%; max-width: 400px; margin: 20px auto; padding: 15px 30px; font-size: 18px;">
                         <i class="fas fa-paper-plane"></i> Submit Application
                     </button>
                 </div>
@@ -665,7 +668,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3><i class="fas fa-passport"></i> Deshswaar</h3>
+                    <h3><i class="fas fa-passport"></i> DeshDwaar</h3>
                     <p>Your trusted partner for all passport services.</p>
                 </div>
                 <div class="footer-section">
@@ -678,7 +681,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Deshswaar - Government of India. All rights reserved.</p>
+                <p>&copy; 2025 DeshDwaar - Government of India. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -689,25 +692,79 @@
     <style>
         .application-section {
             padding: 120px 0 80px;
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #667eea 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
             min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .application-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
         }
         
         .application-header {
             text-align: center;
             margin-bottom: 3rem;
+            animation: fadeInUp 0.8s ease-out;
         }
         
         .application-header h1 {
-            color: #2c3e50;
+            color: white;
             margin-bottom: 1rem;
             font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
         
         .application-header p {
-            color: #666;
+            color: rgba(255, 255, 255, 0.9);
             font-size: 1.1rem;
             margin-bottom: 2rem;
+        }
+
+        .progress-bar {
+            width: 80%;
+            max-width: 800px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            margin: 2rem auto;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #f39c12, #e67e22, #2ecc71);
+            background-size: 200% 100%;
+            border-radius: 10px;
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: shimmer 2s infinite;
+            box-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0;
+            }
+            100% {
+                background-position: 200% 0;
+            }
         }
         
         .progress-steps {
@@ -724,23 +781,44 @@
             padding: 0.5rem 1rem;
             border-radius: 20px;
             background: white;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(52, 152, 219, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .step:hover::before {
+            left: 100%;
         }
         
         .step:hover {
-            background: #e9ecef;
-            transform: translateY(-2px);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
         }
         
         .step.active {
-            background: #3498db;
+            background: linear-gradient(135deg, #3498db, #2ecc71);
             color: white;
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
         }
         
         .step.completed {
-            background: #27ae60;
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
             color: white;
+            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.4);
         }
         
         .form-step {
@@ -765,7 +843,8 @@
         
         .application-info {
             padding: 60px 0;
-            background: white;
+            background: linear-gradient(135deg, #ffffff, #f8f9fa);
+            position: relative;
         }
         
         .info-grid {
@@ -777,20 +856,45 @@
         .info-card {
             text-align: center;
             padding: 2rem;
-            background: #f8f9fa;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
+            background: white;
+            border-radius: 15px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(52, 152, 219, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .info-card:hover::before {
+            left: 100%;
         }
         
         .info-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 40px rgba(52, 152, 219, 0.2);
         }
         
         .info-icon {
             font-size: 2.5rem;
             color: #3498db;
             margin-bottom: 1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .info-card:hover .info-icon {
+            transform: scale(1.2) rotate(10deg);
+            color: #f39c12;
         }
         
         .info-card h3 {

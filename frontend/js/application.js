@@ -1,4 +1,4 @@
-// Application JavaScript for Deshswaar Passport System
+// Application JavaScript for DeshDwaar Passport System
 
 let currentStep = 1;
 const totalSteps = 6;
@@ -112,7 +112,7 @@ function updateNavigationButtons() {
         submitBtn.style.display = 'none';
     } else if (currentStep === totalSteps) {
         nextBtn.style.display = 'none';
-        submitBtn.style.display = 'inline-block';
+        submitBtn.style.display = 'block';
     } else {
         nextBtn.style.display = 'inline-block';
         submitBtn.style.display = 'none';

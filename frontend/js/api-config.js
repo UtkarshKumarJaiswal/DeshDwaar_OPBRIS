@@ -1,4 +1,4 @@
-// API Configuration for Deshswaar Passport System
+// API Configuration for DeshDwaar Passport System
 // This file configures the connection between frontend and backend
 
 const API_CONFIG = {

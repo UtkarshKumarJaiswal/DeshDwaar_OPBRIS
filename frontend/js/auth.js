@@ -122,7 +122,7 @@ function handleRegister(e) {
     submitBtn.innerHTML = '<span class="loading"></span> Creating Account...';
     submitBtn.disabled = true;
     
-    // Simulate API call
+    // Prepare registration data
     const registerData = {
         firstName: formData.get('firstName'),
         lastName: formData.get('lastName'),
@@ -133,19 +133,64 @@ function handleRegister(e) {
         agreeToTerms: formData.get('agreeToTerms') === 'on'
     };
     
-    setTimeout(() => {
-        // Check if email already exists (mock check)
+    // Call backend API to register user
+    fetch('http://localhost:3000/api/auth/register', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify(registerData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Create user session
+            const user = {
+                id: data.user.id || data.user._id,
+                email: data.user.email,
+                name: `${data.user.firstName} ${data.user.lastName}`,
+                firstName: data.user.firstName,
+                lastName: data.user.lastName,
+                phone: data.user.phone,
+                registrationDate: data.user.registrationDate || new Date().toISOString(),
+                isAuthenticated: true
+            };
+            
+            // Store user session
+            saveToLocalStorage('user_session', user);
+            
+            // Store auth token if provided
+            if (data.token) {
+                localStorage.setItem('authToken', data.token);
+            }
+            
+            // Show success message
+            DeshswaarUtils.showNotification('Registration successful! Redirecting to dashboard...', 'success');
+            
+            // Redirect to dashboard
+            setTimeout(() => {
+                window.location.href = 'dashboard.html';
+            }, 1500);
+        } else {
+            throw new Error(data.message || 'Registration failed');
+        }
+    })
+    .catch(error => {
+        console.error('Registration error:', error);
+        submitBtn.innerHTML = originalHTML;
+        submitBtn.disabled = false;
+        
+        // Fallback to local storage if backend is not available
         const existingUser = getFromLocalStorage('users') || [];
         const emailExists = existingUser.some(user => user.email === registerData.email);
         
         if (emailExists) {
-            submitBtn.innerHTML = originalHTML;
-            submitBtn.disabled = false;
             DeshswaarUtils.showNotification('Email already registered. Please use a different email.', 'error');
             return;
         }
         
-        // Create new user
+        // Create new user locally
         const newUser = {
             id: generateUserId(),
             ...registerData,
@@ -157,18 +202,31 @@ function handleRegister(e) {
         // Remove password from stored data
         delete newUser.password;
         
-        // Store user
+        // Store user locally
         existingUser.push(newUser);
         saveToLocalStorage('users', existingUser);
         
-        // Show success message
-        DeshswaarUtils.showNotification('Registration successful! Please check your email for verification.', 'success');
+        // Create session
+        const user = {
+            id: newUser.id,
+            email: newUser.email,
+            name: `${newUser.firstName} ${newUser.lastName}`,
+            firstName: newUser.firstName,
+            lastName: newUser.lastName,
+            phone: newUser.phone,
+            registrationDate: newUser.registrationDate,
+            isAuthenticated: true
+        };
+        saveToLocalStorage('user_session', user);
         
-        // Redirect to login
+        // Show success message
+        DeshswaarUtils.showNotification('Registration successful! Redirecting to dashboard...', 'success');
+        
+        // Redirect to dashboard
         setTimeout(() => {
-            window.location.href = 'login.html?registered=true';
-        }, 2000);
-    }, 2000);
+            window.location.href = 'dashboard.html';
+        }, 1500);
+    });
 }
 
 // Validate login form

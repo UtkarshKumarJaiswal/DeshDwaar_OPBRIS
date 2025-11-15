@@ -2,18 +2,16 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+const { authenticateToken, JWT_SECRET } = require('../middleware/auth');
 const router = express.Router();
-
-// JWT Secret (in production, use environment variable)
-const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-here';
 
 // Register endpoint
 router.post('/register', async (req, res) => {
     try {
-        const { firstName, lastName, email, phone, password, confirmPassword } = req.body;
+        const { firstName, lastName, email, phone, password, confirmPassword, dateOfBirth, gender, maritalStatus, aadharNumber, panNumber } = req.body;
         
         // Validation
-        if (!firstName || !lastName || !email || !phone || !password) {
+        if (!firstName || !lastName || !email || !phone || !password || !dateOfBirth || !gender || !maritalStatus || !aadharNumber) {
             return res.status(400).json({
                 success: false,
                 message: 'All fields are required'
@@ -46,27 +44,24 @@ router.post('/register', async (req, res) => {
             });
         }
         
-        // Hash password
-        const saltRounds = 12;
-        const hashedPassword = await bcrypt.hash(password, saltRounds);
-        
-        // Create user
+        // Create user - let User pre('save') handle hashing
         const user = new User({
             firstName,
             lastName,
             email,
             phone,
-            password: hashedPassword
+            password, // plaintext -> will be hashed in pre-save middleware
+            dateOfBirth,
+            gender,
+            maritalStatus,
+            aadharNumber,
+            panNumber
         });
-        
+
         await user.save();
         
         // Generate JWT token
-        const token = jwt.sign(
-            { userId: user._id, email: user.email },
-            JWT_SECRET,
-            { expiresIn: '24h' }
-        );
+        const token = jwt.sign({ userId: user._id, email: user.email }, JWT_SECRET, { expiresIn: '24h' });
         
         res.status(201).json({
             success: true,
@@ -104,7 +99,7 @@ router.post('/login', async (req, res) => {
         }
         
         // Find user
-        const user = await User.findOne({ email });
+        const user = await User.findOne({ email }).select('+password');
         if (!user) {
             return res.status(400).json({
                 success: false,
@@ -157,7 +152,7 @@ router.post('/login', async (req, res) => {
 // Get current user profile
 router.get('/profile', authenticateToken, async (req, res) => {
     try {
-        const user = await User.findById(req.user.userId).select('-password');
+    const user = await User.findById(req.user.userId).select('-password');
         
         if (!user) {
             return res.status(404).json({
@@ -185,7 +180,7 @@ router.put('/profile', authenticateToken, async (req, res) => {
     try {
         const { firstName, lastName, phone, address } = req.body;
         
-        const user = await User.findById(req.user.userId);
+    const user = await User.findById(req.user.userId);
         if (!user) {
             return res.status(404).json({
                 success: false,
@@ -249,7 +244,7 @@ router.put('/change-password', authenticateToken, async (req, res) => {
             });
         }
         
-        const user = await User.findById(req.user.userId);
+        const user = await User.findById(req.user.userId).select('+password');
         if (!user) {
             return res.status(404).json({
                 success: false,
@@ -266,12 +261,9 @@ router.put('/change-password', authenticateToken, async (req, res) => {
             });
         }
         
-        // Hash new password
-        const saltRounds = 12;
-        const hashedNewPassword = await bcrypt.hash(newPassword, saltRounds);
-        
-        user.password = hashedNewPassword;
-        await user.save();
+    // Set new password (pre-save middleware will hash it)
+    user.password = newPassword;
+    await user.save();
         
         res.json({
             success: true,
@@ -286,29 +278,5 @@ router.put('/change-password', authenticateToken, async (req, res) => {
         });
     }
 });
-
-// Token verification middleware
-function authenticateToken(req, res, next) {
-    const authHeader = req.headers['authorization'];
-    const token = authHeader && authHeader.split(' ')[1]; // Bearer TOKEN
-    
-    if (!token) {
-        return res.status(401).json({
-            success: false,
-            message: 'Access token required'
-        });
-    }
-    
-    jwt.verify(token, JWT_SECRET, (err, user) => {
-        if (err) {
-            return res.status(403).json({
-                success: false,
-                message: 'Invalid or expired token'
-            });
-        }
-        req.user = user;
-        next();
-    });
-}
 
 module.exports = router;

@@ -29,28 +29,18 @@ app.use(cors({
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
-// Database connection
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/deshswaar', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(() => {
-  console.log('✅ Connected to MongoDB');
-})
-.catch((error) => {
-  console.error('❌ MongoDB connection error:', error);
-  process.exit(1);
-});
+// Expose a reusable connect function so tests can control DB lifecycle
+async function connectDB(uri) {
+  const mongoUri = uri || process.env.MONGODB_URI || 'mongodb://localhost:27017/deshswaar';
+  return mongoose.connect(mongoUri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+}
 
 // Routes
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/applications', require('./routes/applications'));
-
-// Placeholder routes for future implementation
-// app.use('/api/users', require('./routes/users'));
-// app.use('/api/appointments', require('./routes/appointments'));
-// app.use('/api/payments', require('./routes/payments'));
-// app.use('/api/admin', require('./routes/admin'));
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
@@ -81,11 +71,23 @@ app.use((error, req, res, next) => {
   });
 });
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`🚀 Deshswaar API Server running on port ${PORT}`);
-  console.log(`🌐 Environment: ${process.env.NODE_ENV || 'development'}`);
-  console.log(`📊 Health check: http://localhost:${PORT}/api/health`);
-});
+// Start server when not in test mode
+if (process.env.NODE_ENV !== 'test') {
+  (async () => {
+    try {
+      await connectDB();
+      console.log('✅ Connected to MongoDB');
+    } catch (error) {
+      console.error('❌ MongoDB connection error:', error);
+      process.exit(1);
+    }
 
-module.exports = app;
+    app.listen(PORT, () => {
+      console.log(`🚀 Deshswaar API Server running on port ${PORT}`);
+      console.log(`🌐 Environment: ${process.env.NODE_ENV || 'development'}`);
+      console.log(`📊 Health check: http://localhost:${PORT}/api/health`);
+    });
+  })();
+}
+
+module.exports = { app, connectDB };

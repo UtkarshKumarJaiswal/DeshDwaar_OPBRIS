@@ -1,0 +1,14 @@
+{
+  "name": "deshswaar-scripts",
+  "version": "1.0.0",
+  "description": "Utility scripts for Deshswaar Passport System",
+  "main": "listUsers.js",
+  "scripts": {
+    "list-users": "node listUsers.js",
+    "export-users": "node exportUsers.js"
+  },
+  "dependencies": {
+    "mongoose": "^7.0.0",
+    "dotenv": "^16.0.0"
+  }
+}

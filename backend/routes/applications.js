@@ -1,11 +1,9 @@
 const express = require('express');
-const jwt = require('jsonwebtoken');
 const Application = require('../models/Application');
 const User = require('../models/User');
+const { authenticateToken } = require('../middleware/auth');
 const router = express.Router();
 
-// JWT Secret (in production, use environment variable)
-const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-here';
 
 // Submit new application
 router.post('/submit', authenticateToken, async (req, res) => {
@@ -342,30 +340,6 @@ function generateStatusTimeline(application) {
     ];
     
     return timeline;
-}
-
-// Token verification middleware
-function authenticateToken(req, res, next) {
-    const authHeader = req.headers['authorization'];
-    const token = authHeader && authHeader.split(' ')[1]; // Bearer TOKEN
-    
-    if (!token) {
-        return res.status(401).json({
-            success: false,
-            message: 'Access token required'
-        });
-    }
-    
-    jwt.verify(token, JWT_SECRET, (err, user) => {
-        if (err) {
-            return res.status(403).json({
-                success: false,
-                message: 'Invalid or expired token'
-            });
-        }
-        req.user = user;
-        next();
-    });
 }
 
 module.exports = router;
